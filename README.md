@@ -12,6 +12,28 @@ Your project must go beyond the topics we covered in class in some
 significant way, and must somehow take advantage of features of a
 mobile device (mobility, camera, motion sensors, etc.).
 
+For reference, these are the topics we are covering:
+
+ * Basic layout elements
+ * Graphics and simple animation, including physics simulations
+ * Permissions handling
+ * Maps with user-tracking and annotations
+ * Local key-value storage
+ * Local file storage
+ * Remote database access with Redis
+ * Accessing accelerometer data
+ * Creating alert dialogs and snackbars
+ * Custom icons and sounds
+ * Local notifications and background services
+
+Here are _some_ topics we are not covering:
+
+ * Push notifications from remote services
+ * Using the camera
+ * Using the microphone
+ * Sprites or other complex animations
+ * Additional third-party APIs, such as Firebase, Spotify, etc.
+
 ## Deliverables
 
 You will need to submit the following things:
@@ -34,10 +56,14 @@ This proposal can be in markdown, plain text, or PDF, and should have an
 obvious name. In addition, you should include a Flutter project, as with the
 solo projects.
 
-We will discuss your proposal with you, so that it is appropriately scoped
-for difficulty (not too easy, nor too hard), and has clearly-identified
-milestones, minimal goals, and stretch goals. There will be three milestone
-submissions before the final submission.
+We will discuss your proposal with you, so that it is appropriately
+scoped for difficulty (not too easy, nor too hard), and has
+clearly-identified milestones, minimal goals, and stretch goals. There
+will be three milestone submissions before the final
+submission. **While your proposal includes milestone tasks, you
+milestone submissions should be *time-based*, not progress-based.** That
+is, we want you to submit milestone progress reports roughly every two
+weeks. See below for more details.
 
 The final submission must include the following:
 
@@ -66,6 +92,21 @@ exercises. Your proposal will obviously have to include functionality beyond
 what we will do for these exercises.
 
 ## Format of the Milestones
+
+The milestones are progress reports. Whether you are ahead or behind on
+your tasks, the milestones should be submitted roughly every two weeks
+(see the syllabus for the expected submission dates). The purpose of these
+is so that the grader for your group:
+
+ * can see that you are making progress
+ * knows what issues you are facing
+ * can approve or provide feedback on proposed changes
+
+If you are not proposing changes, your grader will mark your milestone
+as Complete, possibly with some feedback. If you _are_ proposing
+changes, a grade of Complete means the changes are acceptable, while a
+grade of Incomplete means they have comments about your changes that
+you need to incorporate.
 
 Your milestone document should be named either `MilestoneX.txt`,
 `MilestoneX.md`, or `MilestoneX.pdf`, where `X` is the milestone number

@@ -1,4 +1,4 @@
-# CMSC436 Project Proposal: Watchlist
+# CMSC436 Project Proposal: Snowglobe
 
 ## Project Team 123
 
@@ -8,62 +8,79 @@
 
 ## App Description
 
-This app will allow a user to track their TV viewing, including
-where they watch a show (network TV, streaming service, etc.),
-whether they're currently watching it, and other assorted information.
+This app will be a simulation of a souvenier snow globe, such as you
+might get while on vacation. It will come pre-populated with photos of
+landmarks, and the user will be able to add their own photos to the
+app. Shaking the devide will cause animated "snow" to swirl around the
+photo, settling down to the bottom when the device is not being
+shaken. How fast the snow swirls around will depend on how vigorously
+the user shakes their device.
 
 ## Minimal Goals
 
-The app will contain a list of TV shows, with an interface that allows
-the user to add or delete shows. For each show, the user will be able
-to select:
+The app will contain two main tabs:
 
- * Where/how they watch it
- * Whether it's a show they're currently watching
- * The show's genre or genres
- * A rating of how much they enjoy the show
+ * A list of images
+   * Contains initial set of image assets
+   * Also contains downloaded images added as local files
+   * Has the ability to select one of the images
+   * A button on this tab allows the user to add a local file to the list
+   * Another button allows the user to take a photo with the camera and
+     add it to the list
+ * A snowglobe
+   * Displays the selected image clipped to a circular region
+   * Additional graphics add a "base" to the clipped image, making it
+     look like a physical snowglobe
+   * A large number of "snowflakes" are drawn over the image
+   * The snowflakes fall under simulated gravity, and have horizontal
+     motion damped by fluid resistance
+   * Shaking the device applies randomized upward and horizontal impulses to
+     the snowflakes; more vigorous shaking results in greater impulses
+   * Shaking the device also plays a custom sound
+
+There will also be a drawer with user preferences, controlling
+
+ * the number of snowflakes
+ * the size of the snowflakes
+ * whether or not to play the shaking sound, and a volume slider
+
 
 ## Stretch Goals
 
 We have identified the following stretch goals:
 
- * Free-text notes about the show
- * Links to the show or information about the show
- * Images or clips from the show
+ * Add notes to the images including the date taken/downloaded and
+   some descriptive text
+     * The date is displayed in the list tab
+     * The descriptive text is displayed on the snowglobe tab
+ * A selection of background music, which can either be selected from a
+   third tab or specified for a particular image
+     * a new preference will control whether the music plays or not, with
+       a volume slider
+     * some mechanism to add/select new music
 
 ## Project Timeline
 
 ### Milestone 1
 
- * The ability to enter information about a new show
- * A scrollable list of the shows currently entered
- * A toggle to set/display whether a show is currently
-   being watched
+ * Images and Snowglobe tabs
+ * Image assets displayed and selectable in the Images tab
+ * Snowglobe tab draws the snowglobe, with the selected image
+ * Snowflakes that fall under gravity, with a temporary "shake" button
 
 ### Milestone 2
 
- * A separate tab to display details about a show; this
-   is where the toggle control will be located
- * A selector for one or more genres, with the ability to add
-   new genres
- * A stepper or picker to select a star rating
+ * Local image file addition to the image list
+ * Accelerometer readings to detect shaking, including magnitude for impulse
+ * Shaking sound
+ * Removal of temporary "shake" button
 
 ### Milestone 3
 
-The minimal features will be fully implemented and nicely
-displayed:
-
- * The detail view will have the watch toggle, genres, and
-   rating, as well as a "delete" button
- * The list view will have an "add" button for new shows, and
-   will select long-press to delete a show from the list
- * The list display will also include icons indicating the
-   genres, the star rating, and a visual indicator of whether
-   the show is being watched
-
-At this point, we will begin working on the stretch goals
-
+ * Preferences drawer with snowflake quantity/size and shaking volume slider
+ * Camera interface
+ 
 ### Final submission
 
-Stretch goals completed, project submitted, and a demonstration
-scheduled.
+Stretch goals completed, project submitted with a demonstration
+video.
