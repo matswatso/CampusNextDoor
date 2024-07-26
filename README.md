@@ -83,8 +83,14 @@ Your proposal should have the following format:
  * List of team members
  * General description of the app
  * Minimal Goals -- these are things your app *must* do
+    * There should be roughly 5 distinct goals
+    * At least one of the minimal goals must make specific use of the
+      mobile environment, which might include using the camera, location,
+      sensors, etc.
+    * At least one of the minimal goals must go beyond what we are covering
+      in class (see the General Requirements above)
  * Stretch Goals -- these are additional functionality that might earn
-   extra points
+   extra points, and each must involve significant additional work
  * Project timeline, including development milestones
 
 We have provided a sample proposal on ELMS that corresponds to the in-class
