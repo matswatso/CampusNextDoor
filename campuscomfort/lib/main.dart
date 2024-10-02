@@ -1,4 +1,6 @@
 import 'package:campuscomfort/map_sample.dart';
+import 'package:campuscomfort/map_tab.dart';
+import 'package:campuscomfort/my_reviews_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -43,8 +45,8 @@ class MyHomePage extends StatelessWidget {
                       Tab(text: 'My Reviews'),
                     ])),
                 body: const TabBarView(children: [
-                  MapSample(),
-                  Center(child: Text('My Reviews')),
+                  MapTab(),
+                  MyReviewsTab(),
                 ]))));
   }
 }
