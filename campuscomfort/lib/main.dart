@@ -1,4 +1,6 @@
+import 'package:campuscomfort/map_sample.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,7 +43,7 @@ class MyHomePage extends StatelessWidget {
                       Tab(text: 'My Reviews'),
                     ])),
                 body: const TabBarView(children: [
-                  Center(child: Text('Map')),
+                  MapSample(),
                   Center(child: Text('My Reviews')),
                 ]))));
   }
