@@ -1,4 +1,5 @@
 import 'package:campuscomfort/reviews/review.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class CafeReview extends Review with LocationMixin {
   final String cafeName;
@@ -12,13 +13,16 @@ class CafeReview extends Review with LocationMixin {
     required super.starRating,
     required super.reviewText,
     required super.title,
-    required super.imageUrl,
+    required super.image,
     required super.dateReviewed,
     required this.cafeName,
     required this.customerServiceStars,
     required this.foodQualityStars,
     required this.cleanlinessStars,
-  });
+    required LatLng location,
+  }) {
+    this.location = location;
+  }
 
   @override
   String get reviewTypeName => 'Cafe';
@@ -38,8 +42,9 @@ class CafeReview extends Review with LocationMixin {
       'starRating': starRating,
       'reviewText': reviewText,
       'title': title,
-      'imageUrl': imageUrl,
+      'imageUrl': image,
       'dateReviewed': dateReviewed.toIso8601String(),
+      'location': {'latitude': location.latitude, 'longitude': location.longitude},
       'cafeName': cafeName,
       'customerServiceStars': customerServiceStars,
       'foodQualityStars': foodQualityStars,
@@ -54,12 +59,13 @@ class CafeReview extends Review with LocationMixin {
       starRating: map['starRating'],
       reviewText: map['reviewText'],
       title: map['title'],
-      imageUrl: map['imageUrl'],
+      image: map['imageUrl'],
       dateReviewed: DateTime.parse(map['dateReviewed']),
       cafeName: map['cafeName'],
       customerServiceStars: map['customerServiceStars'],
       foodQualityStars: map['foodQualityStars'],
       cleanlinessStars: map['cleanlinessStars'],
+      location: LatLng(map['location']['latitude'], map['location']['longitude']),
     );
   }
 }

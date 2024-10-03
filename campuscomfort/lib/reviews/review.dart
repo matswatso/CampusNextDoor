@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:campuscomfort/reviews/bathroom_review.dart';
 import 'package:campuscomfort/reviews/building_review.dart';
 import 'package:campuscomfort/reviews/cafe_review.dart';
@@ -5,7 +6,7 @@ import 'package:campuscomfort/reviews/miscellaneous_review.dart';
 import 'package:campuscomfort/reviews/study_area_review.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-// Base Review class
+// Don't use this, use the subclasses. The subclasses are like this but a bit different
 abstract class Review {
   // Review ID
   final String id;
@@ -18,8 +19,9 @@ abstract class Review {
   final String reviewText;
   // The title of the review
   final String title;
-  // Image? I don't remember how images are loaded
-  final String? imageUrl;
+  // Image, though im not sure how to use this yet
+  // Type File?, ? indicates it can be null. This is what we will use when the user does not upload an image
+  final File? image;
   // Review Date
   final DateTime dateReviewed;
 
@@ -29,7 +31,7 @@ abstract class Review {
     required this.starRating,
     required this.reviewText,
     required this.title,
-    required this.imageUrl,
+    required this.image,
     required this.dateReviewed,
   }) : assert(title.length <= 64);
 
@@ -39,6 +41,8 @@ abstract class Review {
   
   Map<String, dynamic> toMap();
   
+  // Used for persistence, but we aren't implementing that right now
+
   factory Review.fromMap(Map<String, dynamic> map) {
     switch (map['type']) {
       case 'Building':
@@ -57,6 +61,8 @@ abstract class Review {
   }
 }
 
+// To prevent code duplication
+// mixin is like multi inheritence except not
 mixin LocationMixin {
   late final LatLng location;
 }

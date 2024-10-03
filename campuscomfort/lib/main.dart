@@ -1,6 +1,12 @@
 import 'package:campuscomfort/map_sample.dart';
 import 'package:campuscomfort/map_tab.dart';
 import 'package:campuscomfort/my_reviews_tab.dart';
+import 'package:campuscomfort/reviews/bathroom_review.dart';
+import 'package:campuscomfort/reviews/building_review.dart';
+import 'package:campuscomfort/reviews/cafe_review.dart';
+import 'package:campuscomfort/reviews/miscellaneous_review.dart';
+import 'package:campuscomfort/reviews/review.dart';
+import 'package:campuscomfort/reviews/study_area_review.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -26,11 +32,76 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key, required this.title});
-
   final String title;
 
   @override
   Widget build(BuildContext context) {
+    // Example reviews
+    List<Review> sampleReviews = [
+      BathroomReview(
+          id: 'Bathroom1',
+          userId: 'Andrew Tiananmen Zong',
+          starRating: 4,
+          reviewText: 'Clean, but a bit dark imo',
+          title: 'Iribe First Floor',
+          image: null,
+          dateReviewed: DateTime(2024, 9, 22),
+          location: const LatLng(38.9869, -76.9426),
+          qualityStars: 4,
+          cleanlinessStars: 5,
+          wellStockedStars: 3),
+      BuildingReview(
+          id: 'Iribe',
+          userId: 'Andrew Tiananmen Zong',
+          starRating: 5,
+          reviewText:
+              'Nice, but the elevator is very slow. Can be difficult to find rooms',
+          title: 'One of the buildings of all time',
+          image: null,
+          dateReviewed: DateTime(2024, 9, 15),
+          buildingName: 'Iribe Center for Computer Science',
+          accessibilityStars: 5,
+          navigabilityStars: 4),
+      CafeReview(
+          id: 'Taco Bell 1',
+          userId: 'Andrew Tiananmen Zong',
+          starRating: 2,
+          reviewText:
+              'I am a fun hating loser, so I dont like the enormous cheez-itz',
+          title: 'I Hate Fun',
+          image: null,
+          dateReviewed: DateTime(2024, 10, 2),
+          location: const LatLng(38.9880, -76.9410),
+          cafeName: 'Taco Bell',
+          customerServiceStars: 4,
+          foodQualityStars: 3,
+          cleanlinessStars: 4),
+      MiscellaneousReview(
+          id: 'NapPods',
+          userId: 'Nap Pods Daily',
+          starRating: 5,
+          reviewText: 'These nap pods are a lifesaver during finals week!',
+          title: 'Amazing nap pods in the library',
+          image: null,
+          dateReviewed: DateTime(2024, 10, 1),
+          location: const LatLng(38.9865, -76.9430),
+          objectReviewed: 'Nap Pods'),
+      StudyAreaReview(
+          id: 'Clarice1',
+          userId: 'Alex Jorgensen',
+          starRating: 4,
+          reviewText:
+              'Honestly I have no idea, Ive never studied there but the vibe is nice and its near a cafe',
+          title: 'Honestly who goes to clarice tho',
+          image: null,
+          dateReviewed: DateTime(2023, 10, 5),
+          location: const LatLng(38.9865, -76.940),
+          studyAreaName: 'Clarice Study Area',
+          noiseLevelStars: 5,
+          comfortStars: 4,
+          popularityStars: 2),
+    ];
+
     return DefaultTabController(
         length: 2,
         child: SafeArea(
@@ -43,10 +114,17 @@ class MyHomePage extends StatelessWidget {
                 Tab(text: 'Map'),
                 Tab(text: 'My Reviews'),
               ])),
-          body: const TabBarView(children: [
-            MapTab(),
-            MyReviewsTab(),
+          body: TabBarView(children: [
+            const MapTab(),
+            MyReviewsTab(reviews: sampleReviews),
           ]),
+
+          // floating button needs functionality. Can it have a pop up, rather than a new view?
+          // Note: It might be easier to have each review subclass create its own widget for creating reviews of that type
+          // That way, the layouts can differ dynamically
+          // I am not sure how to do that, but its probably something along the lines of having a generic function in Review that the subclasses implement
+          // the subclasses have the same general structure to their widgets, but with specialized fields depending on the type
+          // Maybe have it display a drop down where you can select the review type, then below that is an empty space which is filled by the widget for that review type
           floatingActionButton: FloatingActionButton.extended(
             onPressed: () {},
             label: const Text('Add Review'),
