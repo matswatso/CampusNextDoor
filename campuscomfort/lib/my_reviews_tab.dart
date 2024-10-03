@@ -25,7 +25,7 @@ class MyReviewsTab extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                children: List.generate(
+                children: List.generate( // Generate 1 star for every star in the rating
                   review.starRating,
                   (index) => const Icon(Icons.star, size: 16),
                 ),
