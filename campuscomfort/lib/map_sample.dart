@@ -14,37 +14,36 @@ class MapSampleState extends State<MapSample> {
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
 
-  static const CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
-  );
-
   static const CameraPosition _kUMD = CameraPosition(
-      bearing: 192.8334901395799,
+      bearing: 0,
       target: LatLng(38.9869, -76.9426),
       tilt: 0.0,
-      zoom: 19.151926040649414);
+      zoom: 18);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: GoogleMap(
         mapType: MapType.hybrid,
-        initialCameraPosition: _kGooglePlex,
+        initialCameraPosition: _kUMD,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
       ),
+      /*
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _goToTheLake,
         label: const Text('To the lake!'),
         icon: const Icon(Icons.directions_boat),
       ),
+      */
     );
   }
 
+  /*
   Future<void> _goToTheLake() async {
     final GoogleMapController controller = await _controller.future;
     await controller.animateCamera(CameraUpdate.newCameraPosition(_kUMD));
   }
+  */
 }

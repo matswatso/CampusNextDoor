@@ -35,18 +35,24 @@ class MyHomePage extends StatelessWidget {
         length: 2,
         child: SafeArea(
             child: Scaffold(
-                appBar: AppBar(
-                    backgroundColor:
-                        Theme.of(context).colorScheme.inversePrimary,
-                    title: const Text('Campus Comfort'),
-                    centerTitle: true,
-                    bottom: const TabBar(tabs: [
-                      Tab(text: 'Map'),
-                      Tab(text: 'My Reviews'),
-                    ])),
-                body: const TabBarView(children: [
-                  MapTab(),
-                  MyReviewsTab(),
-                ]))));
+          appBar: AppBar(
+              backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+              title: const Text('Campus Comfort'),
+              centerTitle: true,
+              bottom: const TabBar(tabs: [
+                Tab(text: 'Map'),
+                Tab(text: 'My Reviews'),
+              ])),
+          body: const TabBarView(children: [
+            MapTab(),
+            MyReviewsTab(),
+          ]),
+          floatingActionButton: FloatingActionButton.extended(
+            onPressed: () {},
+            label: const Text('Add Review'),
+            icon: const Icon(Icons.add),
+          ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+        )));
   }
 }
