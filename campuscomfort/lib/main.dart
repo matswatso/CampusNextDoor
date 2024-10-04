@@ -158,7 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ]),
           ),
           body: TabBarView(children: [
-            const MapTab(),
+            MapTab(reviews: reviews),
             MyReviewsTab(reviews: reviews),
           ]),
           floatingActionButton: FloatingActionButton.extended(

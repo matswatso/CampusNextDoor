@@ -48,7 +48,6 @@ class MyReviewsTab extends StatelessWidget {
 }
 
 class ReviewView extends StatelessWidget {
-  // Info tab. Named the name of the terpiez, has a medium sized icon on top (the terpiez icon) with the terpiez name below it
   const ReviewView({super.key});
 
   @override
