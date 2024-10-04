@@ -102,6 +102,7 @@ class MyHomePage extends StatelessWidget {
           popularityStars: 2),
     ];
 
+
     return DefaultTabController(
         length: 2,
         child: SafeArea(
@@ -126,11 +127,108 @@ class MyHomePage extends StatelessWidget {
           // the subclasses have the same general structure to their widgets, but with specialized fields depending on the type
           // Maybe have it display a drop down where you can select the review type, then below that is an empty space which is filled by the widget for that review type
           floatingActionButton: FloatingActionButton.extended(
-            onPressed: () {},
+             onPressed: () => _showAddReviewDialog(context),
             label: const Text('Add Review'),
             icon: const Icon(Icons.add),
           ),
           floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
         )));
+  }
+}
+
+void _showAddReviewDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: AddReviewForm(),
+        ),
+      );
+    },
+  );
+}
+
+
+class AddReviewForm extends StatefulWidget {
+  @override
+  _AddReviewFormState createState() => _AddReviewFormState();
+}
+
+class _AddReviewFormState extends State<AddReviewForm> {
+  final _formKey = GlobalKey<FormState>();
+  String _areaName = '';
+  String _reviewType = 'Bathroom';
+  double _starRating = 0;
+  String _description = '';
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextFormField(
+              decoration: InputDecoration(labelText: 'Area Name'),
+              onSaved: (value) {
+                _areaName = value!;
+              },
+            ),
+            DropdownButtonFormField<String>(
+              value: _reviewType,
+              items: ['Building', 'Bathroom', 'Cafe', 'Miscellaneous', 'Study Area', 'Water Fountain']
+                  .map((type) => DropdownMenuItem(
+                        value: type,
+                        child: Text(type),
+                      ))
+                  .toList(),
+              onChanged: (value) {
+                setState(() {
+                  _reviewType = value!;
+                });
+              },
+              decoration: InputDecoration(labelText: 'Review Type'),
+            ),
+            const SizedBox(height: 16), 
+            const Text('* Star Rating *'),
+            Slider(
+              value: _starRating,
+              onChanged: (value) {
+                setState(() {
+                  _starRating = value;
+                });
+              },
+              min: 0,
+              max: 5,
+              divisions: 5,
+              label: _starRating.round().toString(),
+            ),
+            TextFormField(
+              decoration: InputDecoration(labelText: 'Description'),
+              maxLines: 3,
+              onSaved: (value) {
+                _description = value!;
+              },
+            ),
+            ElevatedButton(
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  _formKey.currentState!.save();
+                  Navigator.pop(context);
+                }
+              },
+              child: Text('Submit'),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
