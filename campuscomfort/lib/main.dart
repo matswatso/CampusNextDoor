@@ -40,7 +40,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<Review> sampleReviews = [
+  List<Review> reviews = [
     BathroomReview(
         id: 'Bathroom1',
         userId: 'Andrew Tiananmen Zong',
@@ -123,13 +123,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _addReview(Map<String, dynamic> reviewData) {
     setState(() {
-      sampleReviews.add(
-        BathroomReview(
+      reviews.add(
+        BathroomReview( // TODO: Dynamic review fields
           id: DateTime.now().toString(),
           userId: 'exampleUser',
-          starRating: reviewData['starRating'],
+          starRating: reviewData['starRating'].toInt(),
           reviewText: reviewData['description'],
-          title: reviewData['areaName'],
+          title: reviewData['areaName'], // TODO: enforce length limits
           image: reviewData['image'],
           dateReviewed: DateTime.now(),
           location: const LatLng(38.9869, -76.9426), 
@@ -157,7 +157,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           body: TabBarView(children: [
             const MapTab(),
-            MyReviewsTab(reviews: sampleReviews),
+            MyReviewsTab(reviews: reviews),
           ]),
           floatingActionButton: FloatingActionButton.extended(
             onPressed: () => _showAddReviewDialog(context),
