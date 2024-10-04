@@ -1,4 +1,5 @@
 import 'package:campuscomfort/reviews/review.dart';
+import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MiscellaneousReview extends Review with LocationMixin {
@@ -24,6 +25,11 @@ class MiscellaneousReview extends Review with LocationMixin {
   @override
   String get reviewedItemName => objectReviewed;
 
+  @override
+  Widget buildRatings() {
+    return Container(); // No special stars to be displayed
+  }
+
   // The below 2 functions are used to store and read this object for persistence
   // We are not implementing persistence yet, but we will, so they are here
 
@@ -39,7 +45,10 @@ class MiscellaneousReview extends Review with LocationMixin {
       'imageUrl': image,
       'dateReviewed': dateReviewed.toIso8601String(),
       'objectReviewed': objectReviewed,
-      'location': {'latitude': location.latitude, 'longitude': location.longitude},
+      'location': {
+        'latitude': location.latitude,
+        'longitude': location.longitude
+      },
     };
   }
 
@@ -53,7 +62,8 @@ class MiscellaneousReview extends Review with LocationMixin {
       image: map['imageUrl'],
       dateReviewed: DateTime.parse(map['dateReviewed']),
       objectReviewed: map['objectReviewed'],
-      location: LatLng(map['location']['latitude'], map['location']['longitude']),
+      location:
+          LatLng(map['location']['latitude'], map['location']['longitude']),
     );
   }
 }

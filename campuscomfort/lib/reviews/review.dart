@@ -4,6 +4,7 @@ import 'package:campuscomfort/reviews/building_review.dart';
 import 'package:campuscomfort/reviews/cafe_review.dart';
 import 'package:campuscomfort/reviews/miscellaneous_review.dart';
 import 'package:campuscomfort/reviews/study_area_review.dart';
+import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 // Don't use this, use the subclasses. The subclasses are like this but a bit different
@@ -38,6 +39,9 @@ abstract class Review {
   // Accessors (abstract, implemented in each review type)
   String get reviewTypeName;
   String get reviewedItemName;
+
+  // Abstract class used to display the unique ratings of each subclass
+  Widget buildRatings();
   
   Map<String, dynamic> toMap();
   

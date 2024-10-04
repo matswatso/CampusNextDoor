@@ -47,7 +47,6 @@ class MyHomePage extends StatelessWidget {
           image: null,
           dateReviewed: DateTime(2024, 9, 22),
           location: const LatLng(38.9869, -76.9426),
-          qualityStars: 4,
           cleanlinessStars: 5,
           wellStockedStars: 3),
       BuildingReview(

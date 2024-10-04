@@ -1,4 +1,5 @@
 import 'package:campuscomfort/reviews/review.dart';
+import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class StudyAreaReview extends Review with LocationMixin {
@@ -30,6 +31,41 @@ class StudyAreaReview extends Review with LocationMixin {
   @override
   String get reviewedItemName => studyAreaName;
 
+  @override
+  Widget buildRatings() {
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Row(
+            children: [
+              const Text("Noise Level: ", style: TextStyle(fontSize: 26)),
+              ...List.generate(
+                noiseLevelStars,
+                (index) => const Icon(Icons.star, size: 26, color: Colors.amber),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              const Text("Comfort: ", style: TextStyle(fontSize: 26)),
+              ...List.generate(
+                comfortStars,
+                (index) => const Icon(Icons.star, size: 26, color: Colors.amber),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              const Text("Popularity: ", style: TextStyle(fontSize: 26)),
+              ...List.generate(
+                popularityStars,
+                (index) => const Icon(Icons.star, size: 26, color: Colors.amber),
+              ),
+            ],
+          ),
+        ]);
+  }
+
   // The below 2 functions are used to store and read this object for persistence
   // We are not implementing persistence yet, but we will, so they are here
 
@@ -45,7 +81,10 @@ class StudyAreaReview extends Review with LocationMixin {
       'imageUrl': image,
       'dateReviewed': dateReviewed.toIso8601String(),
       'studyAreaName': studyAreaName,
-      'location': {'latitude': location.latitude, 'longitude': location.longitude},
+      'location': {
+        'latitude': location.latitude,
+        'longitude': location.longitude
+      },
       'noiseLevelStars': noiseLevelStars,
       'comfortStars': comfortStars,
       'popularityStars': popularityStars,
@@ -62,11 +101,11 @@ class StudyAreaReview extends Review with LocationMixin {
       image: map['imageUrl'],
       dateReviewed: DateTime.parse(map['dateReviewed']),
       studyAreaName: map['studyAreaName'],
-      location: LatLng(map['location']['latitude'], map['location']['longitude']),
+      location:
+          LatLng(map['location']['latitude'], map['location']['longitude']),
       noiseLevelStars: map['noiseLevelStars'],
       comfortStars: map['comfortStars'],
       popularityStars: map['popularityStars'],
     );
   }
 }
-

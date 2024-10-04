@@ -1,4 +1,5 @@
 import 'package:campuscomfort/reviews/review.dart';
+import 'package:flutter/material.dart';
 
 class BuildingReview extends Review {
   final String buildingName;
@@ -23,6 +24,32 @@ class BuildingReview extends Review {
 
   @override
   String get reviewedItemName => buildingName;
+
+  @override
+  Widget buildRatings() {
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Row(
+            children: [
+              const Text("Accessibility: ", style: TextStyle(fontSize: 26)),
+              ...List.generate(
+                accessibilityStars,
+                (index) => const Icon(Icons.star, size: 26, color: Colors.amber),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              const Text("Navigability: ", style: TextStyle(fontSize: 26)),
+              ...List.generate(
+                navigabilityStars,
+                (index) => const Icon(Icons.star, size: 26, color: Colors.amber),
+              ),
+            ],
+          ),
+        ]);
+  }
 
   // The below 2 functions are used to store and read this object for persistence
   // We are not implementing persistence yet, but we will, so they are here

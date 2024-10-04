@@ -1,8 +1,8 @@
 import 'package:campuscomfort/reviews/review.dart';
+import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class BathroomReview extends Review with LocationMixin {
-  final int qualityStars;
   final int cleanlinessStars;
   final int wellStockedStars;
 
@@ -15,7 +15,6 @@ class BathroomReview extends Review with LocationMixin {
     required super.image,
     required super.dateReviewed,
     required LatLng location,
-    required this.qualityStars,
     required this.cleanlinessStars,
     required this.wellStockedStars,
   }) {
@@ -27,6 +26,32 @@ class BathroomReview extends Review with LocationMixin {
 
   @override
   String get reviewedItemName => 'Bathroom';
+
+  @override
+  Widget buildRatings() {
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Row(
+            children: [
+              const Text("Cleanliness: ", style: TextStyle(fontSize: 26)),
+              ...List.generate(
+                cleanlinessStars,
+                (index) => const Icon(Icons.star, size: 26, color: Colors.amber),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              const Text("Stocked: ", style: TextStyle(fontSize: 26)),
+              ...List.generate(
+                wellStockedStars,
+                (index) => const Icon(Icons.star, size: 26, color: Colors.amber),
+              ),
+            ],
+          ),
+        ]);
+  }
 
   // The below 2 functions are used to store and read this object for persistence
   // We are not implementing persistence yet, but we will, so they are here
@@ -42,8 +67,10 @@ class BathroomReview extends Review with LocationMixin {
       'title': title,
       'imageUrl': image,
       'dateReviewed': dateReviewed.toIso8601String(),
-      'location': {'latitude': location.latitude, 'longitude': location.longitude},
-      'qualityStars': qualityStars,
+      'location': {
+        'latitude': location.latitude,
+        'longitude': location.longitude
+      },
       'cleanlinessStars': cleanlinessStars,
       'wellStockedStars': wellStockedStars,
     };
@@ -58,8 +85,8 @@ class BathroomReview extends Review with LocationMixin {
       title: map['title'],
       image: map['imageUrl'],
       dateReviewed: DateTime.parse(map['dateReviewed']),
-      location: LatLng(map['location']['latitude'], map['location']['longitude']),
-      qualityStars: map['qualityStars'],
+      location:
+          LatLng(map['location']['latitude'], map['location']['longitude']),
       cleanlinessStars: map['cleanlinessStars'],
       wellStockedStars: map['wellStockedStars'],
     );
