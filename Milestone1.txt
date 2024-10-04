@@ -1,0 +1,16 @@
+Map tab completed with a scrollable map
+My reviews tab
+Review system with amenity types
+
+
+
+^
+GOALS
+
+
+GROUP Milestone Accomplishments
+
+My Reviews Tab functions with adding reviews by attatching type of location,name of the building / area, number of stars, and description
+Local Storage of Adding the reviews to the MyReviews Tab
+
+
