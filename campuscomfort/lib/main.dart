@@ -1,5 +1,4 @@
-import 'package:campuscomfort/add_review_form_state.dart';
-import 'package:campuscomfort/map_sample.dart';
+import 'package:campuscomfort/add_review_form.dart';
 import 'package:campuscomfort/map_tab.dart';
 import 'package:campuscomfort/my_reviews_tab.dart';
 import 'package:campuscomfort/reviews/bathroom_review.dart';
@@ -8,7 +7,6 @@ import 'package:campuscomfort/reviews/cafe_review.dart';
 import 'package:campuscomfort/reviews/miscellaneous_review.dart';
 import 'package:campuscomfort/reviews/review.dart';
 import 'package:campuscomfort/reviews/study_area_review.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -122,23 +120,90 @@ class _MyHomePageState extends State<MyHomePage> {
       },
     );
   }
-
+  // change this to just take a Review object and add it
+  // or maybe not? needs location data which is easier to get here
   void _addReview(Map<String, dynamic> reviewData) {
     setState(() {
-      reviews.add(
-        BathroomReview( // TODO: Dynamic review fields
-          id: DateTime.now().toString(),
-          userId: 'exampleUser',
-          starRating: reviewData['starRating'].toInt(),
-          reviewText: reviewData['description'],
-          title: reviewData['areaName'], // TODO: enforce length limits
-          image: reviewData['image'],
-          dateReviewed: DateTime.now(),
-          location: const LatLng(38.9869, -76.9426), 
-          cleanlinessStars: 5, 
-          wellStockedStars: 3, 
-        ),
-      );
+      switch (reviewData['type']) { // I think build map and call function given
+        case 'Bathroom':
+          reviews.add(
+            BathroomReview(
+              id: DateTime.now().toString(),
+              userId: 'exampleUser',
+              starRating: reviewData['starRating'].toInt(),
+              reviewText: reviewData['reviewText'],
+              title: reviewData['title'],
+              image: null, // TODO: fill this in
+              dateReviewed: DateTime.now(),
+              location: const LatLng(38.9869, -76.9426), // TODO: user location
+              cleanlinessStars: reviewData['cleanlinessStars'].toInt(), 
+              wellStockedStars: reviewData['wellStockedStars'].toInt(), 
+            )
+          );
+        case 'Building':
+          reviews.add(
+            BuildingReview(
+              id: DateTime.now().toString(),
+              userId: 'exampleUser',
+              starRating: reviewData['starRating'].toInt(),
+              reviewText: reviewData['reviewText'],
+              title: reviewData['title'],
+              image: null, // TODO: fill this in
+              dateReviewed: DateTime.now(),
+              accessibilityStars: reviewData['accessibilityStars'].toInt(), 
+              navigabilityStars: reviewData['navigabilityStars'].toInt(),
+              buildingName: reviewData['buildingName'], // TODO: This is a placeholder for milestone 3
+            )
+          );
+        case 'Cafe':
+          reviews.add(
+            CafeReview(
+              id: DateTime.now().toString(),
+              userId: 'exampleUser',
+              starRating: reviewData['starRating'].toInt(),
+              reviewText: reviewData['reviewText'],
+              title: reviewData['title'],
+              image: null, // TODO: fill this in
+              dateReviewed: DateTime.now(),
+              cafeName: reviewData['cafeName'],
+              customerServiceStars: reviewData['customerServiceStars'].toInt(),
+              foodQualityStars: reviewData['foodQualityStars'].toInt(),
+              cleanlinessStars: reviewData['cleanlinessStars'].toInt(),
+              location: const LatLng(38.9869, -76.9426), // TODO: user location
+            )
+          );
+        case 'Miscellaneous':
+          reviews.add(
+            MiscellaneousReview(
+              id: DateTime.now().toString(),
+              userId: 'exampleUser',
+              starRating: reviewData['starRating'].toInt(),
+              reviewText: reviewData['reviewText'],
+              title: reviewData['title'],
+              image: null, // TODO: fill this in
+              dateReviewed: DateTime.now(),
+              objectReviewed: reviewData['objectReviewed'],
+              location: const LatLng(38.9869, -76.9426), // TODO: user location
+            )
+          );
+        case 'Study Area':
+          reviews.add(
+            StudyAreaReview(
+              id: DateTime.now().toString(),
+              userId: 'exampleUser',
+              starRating: reviewData['starRating'].toInt(),
+              reviewText: reviewData['reviewText'],
+              title: reviewData['title'],
+              image: null, // TODO: fill this in
+              dateReviewed: DateTime.now(),
+              noiseLevelStars: reviewData['noiseLevelStars'].toInt(),
+              comfortStars: reviewData['comfortStars'].toInt(),
+              popularityStars: reviewData['popularityStars'].toInt(),
+              studyAreaName: reviewData['studyAreaName'],
+              location: const LatLng(38.9869, -76.9426), // TODO: user location
+            )
+          );
+      }
     });
   }
 
