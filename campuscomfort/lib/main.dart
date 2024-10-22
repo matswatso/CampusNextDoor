@@ -1,4 +1,5 @@
 import 'package:campuscomfort/add_review_form.dart';
+import 'package:campuscomfort/map_sample.dart';
 import 'package:campuscomfort/map_tab.dart';
 import 'package:campuscomfort/my_reviews_tab.dart';
 import 'package:campuscomfort/reviews/bathroom_review.dart';
@@ -102,6 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
         comfortStars: 4,
         popularityStars: 2),
   ];
+  final mapKey = GlobalKey<MapSampleState>(); // allows us to access map state information
 
   // Functions for adding reviews
   void _showAddReviewDialog(BuildContext context) {
@@ -123,6 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
   // change this to just take a Review object and add it
   // or maybe not? needs location data which is easier to get here
   void _addReview(Map<String, dynamic> reviewData) {
+    LatLng userLocation = mapKey.currentState?.currentPosition ?? const LatLng(38.989571,-76.936436);
     setState(() {
       switch (reviewData['type']) { // I think build map and call function given
         case 'Bathroom':
@@ -133,9 +136,9 @@ class _MyHomePageState extends State<MyHomePage> {
               starRating: reviewData['starRating'].toInt(),
               reviewText: reviewData['reviewText'],
               title: reviewData['title'],
-              image: null, // TODO: fill this in
+              image: reviewData['image'],
               dateReviewed: DateTime.now(),
-              location: const LatLng(38.9869, -76.9426), // TODO: user location
+              location: userLocation,
               cleanlinessStars: reviewData['cleanlinessStars'].toInt(), 
               wellStockedStars: reviewData['wellStockedStars'].toInt(), 
             )
@@ -148,7 +151,7 @@ class _MyHomePageState extends State<MyHomePage> {
               starRating: reviewData['starRating'].toInt(),
               reviewText: reviewData['reviewText'],
               title: reviewData['title'],
-              image: null, // TODO: fill this in
+              image: reviewData['image'],
               dateReviewed: DateTime.now(),
               accessibilityStars: reviewData['accessibilityStars'].toInt(), 
               navigabilityStars: reviewData['navigabilityStars'].toInt(),
@@ -163,13 +166,13 @@ class _MyHomePageState extends State<MyHomePage> {
               starRating: reviewData['starRating'].toInt(),
               reviewText: reviewData['reviewText'],
               title: reviewData['title'],
-              image: null, // TODO: fill this in
+              image: reviewData['image'],
               dateReviewed: DateTime.now(),
               cafeName: reviewData['cafeName'],
               customerServiceStars: reviewData['customerServiceStars'].toInt(),
               foodQualityStars: reviewData['foodQualityStars'].toInt(),
               cleanlinessStars: reviewData['cleanlinessStars'].toInt(),
-              location: const LatLng(38.9869, -76.9426), // TODO: user location
+              location: userLocation
             )
           );
         case 'Miscellaneous':
@@ -180,10 +183,10 @@ class _MyHomePageState extends State<MyHomePage> {
               starRating: reviewData['starRating'].toInt(),
               reviewText: reviewData['reviewText'],
               title: reviewData['title'],
-              image: null, // TODO: fill this in
+              image: reviewData['image'],
               dateReviewed: DateTime.now(),
               objectReviewed: reviewData['objectReviewed'],
-              location: const LatLng(38.9869, -76.9426), // TODO: user location
+              location: userLocation
             )
           );
         case 'Study Area':
@@ -194,13 +197,13 @@ class _MyHomePageState extends State<MyHomePage> {
               starRating: reviewData['starRating'].toInt(),
               reviewText: reviewData['reviewText'],
               title: reviewData['title'],
-              image: null, // TODO: fill this in
+              image: reviewData['image'],
               dateReviewed: DateTime.now(),
               noiseLevelStars: reviewData['noiseLevelStars'].toInt(),
               comfortStars: reviewData['comfortStars'].toInt(),
               popularityStars: reviewData['popularityStars'].toInt(),
               studyAreaName: reviewData['studyAreaName'],
-              location: const LatLng(38.9869, -76.9426), // TODO: user location
+              location: userLocation
             )
           );
       }
@@ -223,7 +226,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ]),
           ),
           body: TabBarView(children: [
-            MapTab(reviews: reviews),
+            MapTab(reviews: reviews, mapSampleKey: mapKey),
             MyReviewsTab(reviews: reviews),
           ]),
           floatingActionButton: FloatingActionButton.extended(

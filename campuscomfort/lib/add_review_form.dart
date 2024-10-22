@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AddReviewForm extends StatefulWidget {
   final Function(Map<String, dynamic>) onSubmit;
@@ -11,6 +14,7 @@ class AddReviewForm extends StatefulWidget {
 
 class _AddReviewFormState extends State<AddReviewForm> {
   final _formKey = GlobalKey<FormState>();
+  final ImagePicker _picker = ImagePicker();
   static const List<String> reviewTypes = [
     'Building',
     'Bathroom',
@@ -52,6 +56,74 @@ class _AddReviewFormState extends State<AddReviewForm> {
     );
   }
 
+
+
+  // For the image picker in universal
+
+  Future<void> _pickImage(ImageSource source) async { // Essentially a shell around pickImage() to handle errors and assign the image
+    try {
+      final XFile? pickedFile = await _picker.pickImage(
+        source: source,
+        maxWidth: 3500,
+        maxHeight: 3500,
+        imageQuality: 85,
+      );
+      if (pickedFile != null) {
+        setState(() {
+          _imageFile = pickedFile;
+        });
+      }
+    } catch (e) {
+      debugPrint('Error picking image: $e');
+    }
+  }
+
+  Widget _buildImagePicker() {
+    return Column(
+      children: [
+        const SizedBox(height: 16),
+        const Text('Add Image (Optional)'),
+        const SizedBox(height: 8),
+        if (_imageFile != null) ...[
+          Stack(
+            alignment: Alignment.topRight,
+            children: [
+              Container(
+                height: 200,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.file(
+                    File(_imageFile!.path), // to display the image once its selected
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              IconButton(
+                icon: const Icon(Icons.close, color: Colors.red),
+                onPressed: () {
+                  setState(() {
+                    _imageFile = null;
+                  });
+                },
+              ),
+            ],
+          ),
+        ],
+        const SizedBox(height: 8),
+        ElevatedButton.icon(
+          onPressed: () => _pickImage(ImageSource.gallery),
+          icon: const Icon(Icons.photo_library),
+          label: const Text('Gallery'),
+        ),
+      ],
+    );
+  }
+
   /////////////////////
   ///// Universal /////
   /////////////////////
@@ -59,6 +131,7 @@ class _AddReviewFormState extends State<AddReviewForm> {
   final _reviewTextController = TextEditingController();
   String _reviewType = reviewTypes[0];
   double _starRating = 0;
+  XFile? _imageFile;
   Widget _buildUniversalFields() {
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -117,6 +190,7 @@ class _AddReviewFormState extends State<AddReviewForm> {
           divisions: 5,
           label: _starRating.round().toString(),
         ),
+        _buildImagePicker(), // Image picker has a lot of stuff in it, so for readability it is seperate
       ],
     );
   }
@@ -357,6 +431,7 @@ class _AddReviewFormState extends State<AddReviewForm> {
       'reviewText': _reviewTextController.text,
       'type': _reviewType,
       'starRating': _starRating,
+      'image': _imageFile != null ? File(_imageFile!.path) : null, // incase they didn't attach an image
     };
     switch (_reviewType) { // I think build map and call function given
       case 'Bathroom':

@@ -28,11 +28,14 @@ class MapSampleState extends State<MapSample> {
   LatLng _currentPosition = const LatLng(0, 0); // Will need to access this for adding reviews and suggestions
   StreamSubscription<LocationData>? _locationSubscription; // Real time location tracking
 
+  // For use in main.dart when making Reviews
+  LatLng? get currentPosition => _currentPosition;
+
   @override
   void initState() {
     super.initState();
     _getUserLocation();
-    _createMarkers();
+    _initializeMarkers();
   }
 
   @override
@@ -75,7 +78,7 @@ class MapSampleState extends State<MapSample> {
   Set<Marker> _markers = {};
 
   // initialize review markers
-  void _createMarkers() {
+  void _initializeMarkers() {
     _markers = widget.reviews.where((review) {
       return review is LocationMixin; // Only place markers for reviews with locations. TODO: Add points on buildings for BuildingReviews
     }).map((review) {
@@ -95,6 +98,17 @@ class MapSampleState extends State<MapSample> {
         },
       );
     }).toSet();
+  }
+
+  // to keep review markers up to date when reviews is updated
+  @override
+  void didUpdateWidget(covariant MapSample oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (widget.reviews != oldWidget.reviews) { // If new review
+      _initializeMarkers(); // redo markers
+      setState(() {}); // rebuild
+    }
   }
 
   // Credit to https://www.geeksforgeeks.org/program-distance-two-points-earth/ for this function

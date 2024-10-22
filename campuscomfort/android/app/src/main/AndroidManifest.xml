@@ -45,6 +45,8 @@
             <data android:mimeType="text/plain"/>
         </intent>
     </queries>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- For map -->
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- For image attachment -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 </manifest>

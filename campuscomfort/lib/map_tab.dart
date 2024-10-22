@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 
 class MapTab extends StatelessWidget {
   final List<Review> reviews;
+  final GlobalKey<MapSampleState> mapSampleKey;
 
   const MapTab({
     super.key,
     required this.reviews,
+    required this.mapSampleKey,
   });
 
   @override
@@ -18,12 +20,7 @@ class MapTab extends StatelessWidget {
             ? Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                    Expanded(child: MapSample(reviews: reviews)),
-                    /*Expanded( // To save map loads
-                        child: Icon(
-                      Icons.cloud,
-                      size: constraints.biggest.shortestSide,
-                    )),*/
+                    Expanded(child: MapSample(key: mapSampleKey, reviews: reviews)),
                     /*Padding( // Where other elements will go, if we need them
                       padding: EdgeInsets.all(8.0),
                       child: Text('Elements here'),
@@ -36,12 +33,7 @@ class MapTab extends StatelessWidget {
                     padding: EdgeInsets.all(8.0),
                     child: Text('Elements here'),
                   ), */
-                  Expanded(child: MapSample(reviews: reviews)),
-                  /*Expanded( // To save map loads
-                      child: Icon(
-                    Icons.cloud,
-                    size: constraints.biggest.shortestSide,
-                  )),*/
+                  Expanded(child: MapSample(key: mapSampleKey, reviews: reviews)),
                 ],
               );
       }));
