@@ -100,17 +100,6 @@ class MapSampleState extends State<MapSample> {
     }).toSet();
   }
 
-  // to keep review markers up to date when reviews is updated
-  @override
-  void didUpdateWidget(covariant MapSample oldWidget) {
-    super.didUpdateWidget(oldWidget);
-
-    if (widget.reviews != oldWidget.reviews) { // If new review
-      _initializeMarkers(); // redo markers
-      setState(() {}); // rebuild
-    }
-  }
-
   // Credit to https://www.geeksforgeeks.org/program-distance-two-points-earth/ for this function
   double _calculateDistance(LatLng start, LatLng end) {
     double lat1 = start.latitude * (pi / 180); // to radians
