@@ -167,7 +167,7 @@ class _AddReviewFormState extends State<AddReviewForm> {
             return null;
           },
         ),
-           TextFormField( // doesnt go anywhere yet just to setup for later
+       /*    TextFormField( // doesnt go anywhere yet just to setup for later
           controller: _bldingNameController,
           decoration: const InputDecoration(labelText: 'Building Name'),
           validator: (value) {
@@ -179,7 +179,7 @@ class _AddReviewFormState extends State<AddReviewForm> {
             }
             return null;
           },
-        ),
+        ), */ 
         TextFormField(
           controller: _reviewTextController,
           decoration: const InputDecoration(labelText: 'Review'),
