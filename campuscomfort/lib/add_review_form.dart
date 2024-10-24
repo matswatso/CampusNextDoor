@@ -128,6 +128,7 @@ class _AddReviewFormState extends State<AddReviewForm> {
   ///// Universal /////
   /////////////////////
   final _titleController = TextEditingController();
+  final _bldingNameController = TextEditingController();
   final _reviewTextController = TextEditingController();
   String _reviewType = reviewTypes[0];
   double _starRating = 0;
@@ -166,12 +167,12 @@ class _AddReviewFormState extends State<AddReviewForm> {
             return null;
           },
         ),
-           TextFormField(
-          controller: _titleController,
-          decoration: const InputDecoration(labelText: 'Title'),
+           TextFormField( // doesnt go anywhere yet just to setup for later
+          controller: _bldingNameController,
+          decoration: const InputDecoration(labelText: 'Building Name'),
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Please enter a title';
+              return 'Please enter a Building Name';
             }
             if (value.length >= 64) {
               return 'Title must be less than 64 characters';
@@ -435,7 +436,7 @@ class _AddReviewFormState extends State<AddReviewForm> {
     );
   }
 
-
+ //// Still have to add the Building name but just added to form for later
   // Creates a map for the onSubmit function
   // ['Building', 'Bathroom', 'Cafe', 'Miscellaneous', 'Study Area']
   Map<String, dynamic> _createReview() {
