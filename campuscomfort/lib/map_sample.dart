@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:campuscomfort/my_reviews_tab.dart';
 import 'package:campuscomfort/reviews/review.dart';
@@ -98,27 +97,6 @@ class MapSampleState extends State<MapSample> {
         },
       );
     }).toSet();
-  }
-
-  // Credit to https://www.geeksforgeeks.org/program-distance-two-points-earth/ for this function
-  double _calculateDistance(LatLng start, LatLng end) {
-    double lat1 = start.latitude * (pi / 180); // to radians
-    double lat2 = end.latitude * (pi / 180);
-    double lon1 = start.longitude * (pi / 180);
-    double lon2 = end.longitude * (pi / 180);
-
-    double dLat = lat2 - lat1;
-    double dLon = lon2 - lon1;
-
-    double a = pow(sin(dLat / 2), 2)
-        + cos(lat1) * cos(lat2)
-        * pow(sin(dLon / 2), 2);
-
-    double c = 2 * asin(sqrt(a));
-
-    const int r = 6371000; // in meters
-
-    return r * c;
   }
 
   @override
