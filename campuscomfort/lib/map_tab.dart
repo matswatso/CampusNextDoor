@@ -27,28 +27,44 @@ class MapTab extends StatelessWidget {
       return Center(child: LayoutBuilder(builder: (context, constraints) {
         return orientation == Orientation.portrait
             ? Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => SuggestionsView(
-                            reviews: reviews,
-                            mapSampleKey: mapSampleKey,
-                          ),
+                mainAxisAlignment: MainAxisAlignment.start,
+               children: <Widget>[
+                  SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromARGB(183, 189, 12, 216),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+                          shadowColor: Colors.black, 
+                          elevation: 12,
                         ),
-                      );
-                    },
-                    child: const Text('Suggested Locations'),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => SuggestionsView(
+                                reviews: reviews,
+                                mapSampleKey: mapSampleKey,
+                              ),
+                            ),
+                          );
+                        },
+                        child: const Text('Suggested Locations', style:TextStyle(color: Colors.black)),
+                    ),
                   ),
-                    Expanded(child: MapSample(key: mapSampleKey, reviews: reviews)),
+                  Expanded(child: MapSample(key: mapSampleKey, reviews: reviews)),
                   ])
             : Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
+                  SizedBox(width: 20),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromARGB(183, 189, 12, 216),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                          shadowColor: Colors.black, 
+                          elevation: 12,
+                      ),
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -60,8 +76,9 @@ class MapTab extends StatelessWidget {
                         ),
                       );
                     },
-                    child: const Text('Suggested Locations'),
+                    child: const Text('Suggested \n Locations', style:TextStyle(color: Colors.black, fontSize: 17), ),
                   ),
+                  SizedBox(width: 20),
                   Expanded(child: MapSample(key: mapSampleKey, reviews: reviews)),
                 ],
               );

@@ -166,6 +166,19 @@ class _AddReviewFormState extends State<AddReviewForm> {
             return null;
           },
         ),
+           TextFormField(
+          controller: _titleController,
+          decoration: const InputDecoration(labelText: 'Title'),
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter a title';
+            }
+            if (value.length >= 64) {
+              return 'Title must be less than 64 characters';
+            }
+            return null;
+          },
+        ),
         TextFormField(
           controller: _reviewTextController,
           decoration: const InputDecoration(labelText: 'Review'),
