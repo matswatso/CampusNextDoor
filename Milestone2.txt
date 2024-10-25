@@ -1,0 +1,40 @@
+Original Milestone 2 Goals:
+ - User GPS tracking
+ - Amenity suggestions
+ - Attaching Images 
+ - Full Review adding functionality
+
+Milestone Accomplishments:
+    "User GPS tracking"
+     - Map Can follow the user's GPS location along GPX written path through 
+     the use of the GPX predetermined paths. 
+
+    "Amenity suggestions"
+    - Suggestions button along with tab are created where different reviews can be
+    stored based on the users location and proximity to a review.
+    - Some different features can be added like filtering based on types of reviews
+    in order to allow for users to pick what they need / want near them
+
+
+    "Attaching Images"
+    - Attaching images throug the review add form is completed along with storing these
+    images based on the review that they were added with. 
+
+
+
+    "Full Review Adding Functionality"
+    - We have it so that when a user creates a new review of a specific amenity type, 
+    it is added to the 
+
+
+
+Changes to timeline:
+In our initial plan for Milestone 3 we wanted to use geofencing to determine how to show different 
+building information through reviews to the user based on where they are. However,
+we have realized that there are some difficulties doing this through flutter google maps
+so weve decided to go a different route with this by adding a building information tab. 
+
+Within this tab we will have all of the reviews for a specific building that the user will request
+and we will generalize the star rating as well as sort by most recent reviews per amneity that the user
+can filter so they can find out what they want to about each building they are researching. 
+
