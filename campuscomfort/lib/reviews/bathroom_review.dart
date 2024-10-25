@@ -12,6 +12,7 @@ class BathroomReview extends Review with LocationMixin {
     required super.starRating,
     required super.reviewText,
     required super.title,
+    required super.buildingName,
     required super.image,
     required super.dateReviewed,
     required LatLng location,
@@ -65,6 +66,7 @@ class BathroomReview extends Review with LocationMixin {
       'starRating': starRating,
       'reviewText': reviewText,
       'title': title,
+      'buildingName': buildingName,
       'imageUrl': image,
       'dateReviewed': dateReviewed.toIso8601String(),
       'location': {
@@ -83,6 +85,7 @@ class BathroomReview extends Review with LocationMixin {
       starRating: map['starRating'],
       reviewText: map['reviewText'],
       title: map['title'],
+      buildingName: map['buildingName'],
       image: map['imageUrl'],
       dateReviewed: DateTime.parse(map['dateReviewed']),
       location:

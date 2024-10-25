@@ -128,7 +128,7 @@ class _AddReviewFormState extends State<AddReviewForm> {
   ///// Universal /////
   /////////////////////
   final _titleController = TextEditingController();
-  final _bldingNameController = TextEditingController();
+  final _buildingNameController = TextEditingController();
   final _reviewTextController = TextEditingController();
   String _reviewType = reviewTypes[0];
   double _starRating = 0;
@@ -167,19 +167,16 @@ class _AddReviewFormState extends State<AddReviewForm> {
             return null;
           },
         ),
-       /*    TextFormField( // doesnt go anywhere yet just to setup for later
-          controller: _bldingNameController,
+       TextFormField( // doesnt go anywhere yet just to setup for later
+          controller: _buildingNameController,
           decoration: const InputDecoration(labelText: 'Building Name'),
           validator: (value) {
             if (value == null || value.isEmpty) {
               return 'Please enter a Building Name';
             }
-            if (value.length >= 64) {
-              return 'Title must be less than 64 characters';
-            }
             return null;
           },
-        ), */ 
+        ),
         TextFormField(
           controller: _reviewTextController,
           decoration: const InputDecoration(labelText: 'Review'),
@@ -446,6 +443,7 @@ class _AddReviewFormState extends State<AddReviewForm> {
       'type': _reviewType,
       'starRating': _starRating,
       'image': _imageFile != null ? File(_imageFile!.path) : null, // incase they didn't attach an image
+      'buildingName': _buildingNameController.text,
     };
     switch (_reviewType) { // I think build map and call function given
       case 'Bathroom':
@@ -455,7 +453,6 @@ class _AddReviewFormState extends State<AddReviewForm> {
       case 'Building':
         reviewData['accessibilityStars'] = _accessibilityStars;
         reviewData['navigabilityStars'] = _navigabilityStars;
-        reviewData['buildingName'] = 'placeholder name'; // TODO: fill in (milestone3)
         return reviewData;
       case 'Cafe':
         reviewData['cleanlinessStars'] = _cleanlinessStars;

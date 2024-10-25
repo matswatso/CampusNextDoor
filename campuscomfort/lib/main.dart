@@ -47,6 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
         starRating: 4,
         reviewText: 'Clean, but a bit dark imo',
         title: 'Iribe First Floor',
+        buildingName: 'Iribe',
         image: null,
         dateReviewed: DateTime(2024, 9, 22),
         location: const LatLng(38.9869, -76.9426),
@@ -71,6 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
         reviewText:
             'I am a fun hating loser, so I dont like the enormous cheez-itz',
         title: 'I Hate Fun',
+        buildingName: 'Taco Bell Building',
         image: null,
         dateReviewed: DateTime(2024, 10, 2),
         location: const LatLng(38.9880, -76.9410),
@@ -84,6 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
         starRating: 5,
         reviewText: 'These nap pods are a lifesaver during finals week!',
         title: 'Amazing nap pods in the library',
+        buildingName: 'McKeldin Library',
         image: null,
         dateReviewed: DateTime(2024, 10, 1),
         location: const LatLng(38.9865, -76.9430),
@@ -95,6 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
         reviewText:
             'Honestly I have no idea, Ive never studied there but the vibe is nice and its near a cafe',
         title: 'Honestly who goes to clarice tho',
+        buildingName: 'Clarice Smith Performing Arts Center',
         image: null,
         dateReviewed: DateTime(2023, 10, 5),
         location: const LatLng(38.9865, -76.940),
@@ -136,6 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
               starRating: reviewData['starRating'].toInt(),
               reviewText: reviewData['reviewText'],
               title: reviewData['title'],
+              buildingName: reviewData['buildngName'],
               image: reviewData['image'],
               dateReviewed: DateTime.now(),
               location: userLocation,
@@ -151,11 +156,11 @@ class _MyHomePageState extends State<MyHomePage> {
               starRating: reviewData['starRating'].toInt(),
               reviewText: reviewData['reviewText'],
               title: reviewData['title'],
+              buildingName: reviewData['buildngName'],
               image: reviewData['image'],
               dateReviewed: DateTime.now(),
               accessibilityStars: reviewData['accessibilityStars'].toInt(), 
               navigabilityStars: reviewData['navigabilityStars'].toInt(),
-              buildingName: reviewData['buildingName'], // TODO: This is a placeholder for milestone 3
             )
           );
         case 'Cafe':
@@ -166,6 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
               starRating: reviewData['starRating'].toInt(),
               reviewText: reviewData['reviewText'],
               title: reviewData['title'],
+              buildingName: reviewData['buildngName'],
               image: reviewData['image'],
               dateReviewed: DateTime.now(),
               cafeName: reviewData['cafeName'],
@@ -183,6 +189,7 @@ class _MyHomePageState extends State<MyHomePage> {
               starRating: reviewData['starRating'].toInt(),
               reviewText: reviewData['reviewText'],
               title: reviewData['title'],
+              buildingName: reviewData['buildngName'],
               image: reviewData['image'],
               dateReviewed: DateTime.now(),
               objectReviewed: reviewData['objectReviewed'],
@@ -197,6 +204,7 @@ class _MyHomePageState extends State<MyHomePage> {
               starRating: reviewData['starRating'].toInt(),
               reviewText: reviewData['reviewText'],
               title: reviewData['title'],
+              buildingName: reviewData['buildngName'],
               image: reviewData['image'],
               dateReviewed: DateTime.now(),
               noiseLevelStars: reviewData['noiseLevelStars'].toInt(),

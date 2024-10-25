@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:campuscomfort/reviews/building_review.dart';
 import 'package:campuscomfort/reviews/review.dart';
 import 'package:flutter/material.dart';
 
@@ -71,6 +72,8 @@ class ReviewView extends StatelessWidget {
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
+                          if (review is! BuildingReview)
+                            Text("Building: ${review.buildingName}"),
                           Text(review.userId, style: const TextStyle(fontSize: 20)),
                           Text(review.title, style: const TextStyle(fontSize: 25)),
                           Row(

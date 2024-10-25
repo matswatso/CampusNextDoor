@@ -14,6 +14,7 @@ class CafeReview extends Review with LocationMixin {
     required super.starRating,
     required super.reviewText,
     required super.title,
+    required super.buildingName,
     required super.image,
     required super.dateReviewed,
     required this.cafeName,
@@ -78,6 +79,7 @@ class CafeReview extends Review with LocationMixin {
       'starRating': starRating,
       'reviewText': reviewText,
       'title': title,
+      'buildingName': buildingName,
       'imageUrl': image,
       'dateReviewed': dateReviewed.toIso8601String(),
       'location': {
@@ -98,6 +100,7 @@ class CafeReview extends Review with LocationMixin {
       starRating: map['starRating'],
       reviewText: map['reviewText'],
       title: map['title'],
+      buildingName: map['buildingName'],
       image: map['imageUrl'],
       dateReviewed: DateTime.parse(map['dateReviewed']),
       cafeName: map['cafeName'],

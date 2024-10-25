@@ -20,7 +20,8 @@ abstract class Review {
   final String reviewText;
   // The title of the review
   final String title;
-  // Image, though im not sure how to use this yet
+  // What building the reviewed item is in. If the reviewed item is a building, the name of the reviewed item
+  final String buildingName;
   // Type File?, ? indicates it can be null. This is what we will use when the user does not upload an image
   final File? image;
   // Review Date
@@ -32,6 +33,7 @@ abstract class Review {
     required this.starRating,
     required this.reviewText,
     required this.title,
+    required this.buildingName,
     required this.image,
     required this.dateReviewed,
   }) : assert(title.length <= 64);

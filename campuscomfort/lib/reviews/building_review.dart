@@ -2,7 +2,6 @@ import 'package:campuscomfort/reviews/review.dart';
 import 'package:flutter/material.dart';
 
 class BuildingReview extends Review {
-  final String buildingName;
   final int accessibilityStars;
   final int navigabilityStars;
 
@@ -12,9 +11,9 @@ class BuildingReview extends Review {
     required super.starRating,
     required super.reviewText,
     required super.title,
+    required super.buildingName,
     required super.image,
     required super.dateReviewed,
-    required this.buildingName,
     required this.accessibilityStars,
     required this.navigabilityStars,
   });
