@@ -477,6 +477,7 @@ class _AddReviewFormState extends State<AddReviewForm> {
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       widget.onSubmit(_createReview()); // Pass the information map back to the onSubmit function
+      print("WE REACH NAVIGATOR.POP");
       Navigator.pop(context); // close form
     }
   }
