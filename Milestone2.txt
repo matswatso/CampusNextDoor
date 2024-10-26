@@ -12,8 +12,7 @@ Milestone Accomplishments:
     "Amenity suggestions"
     - Suggestions button along with tab are created where different reviews can be
     stored based on the users location and proximity to a review.
-    - Some different features can be added like filtering based on types of reviews
-    in order to allow for users to pick what they need / want near them
+    - Will suggest 1 area for each type of amenity within 200 meters (if there is one)
 
 
     "Attaching Images"
@@ -23,8 +22,8 @@ Milestone Accomplishments:
 
 
     "Full Review Adding Functionality"
-    - We have it so that when a user creates a new review of a specific amenity type, 
-    it is added to the 
+    - The form now dynamically updates for the type of review they are adding and stores
+    it accordingly
 
 
 
@@ -32,9 +31,9 @@ Changes to timeline:
 In our initial plan for Milestone 3 we wanted to use geofencing to determine how to show different 
 building information through reviews to the user based on where they are. However,
 we have realized that there are some difficulties doing this through flutter google maps
-so weve decided to go a different route with this by adding a building information tab. 
+so we will now be linking reviews together by common building name for the building summary.
 
 Within this tab we will have all of the reviews for a specific building that the user will request
-and we will generalize the star rating as well as sort by most recent reviews per amneity that the user
-can filter so they can find out what they want to about each building they are researching. 
+and we will generalize the star ratings for each kind of amenity. Essentially, a quick
+summary of a building
 
