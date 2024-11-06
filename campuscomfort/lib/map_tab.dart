@@ -33,8 +33,8 @@ class MapTab extends StatelessWidget {
                       width: double.infinity,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(183, 189, 12, 216),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+                          backgroundColor: const Color.fromARGB(183, 189, 12, 216),
+                          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
                           shadowColor: Colors.black, 
                           elevation: 12,
                         ),
@@ -57,10 +57,10 @@ class MapTab extends StatelessWidget {
             : Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(183, 189, 12, 216),
+                          backgroundColor: const Color.fromARGB(183, 189, 12, 216),
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                           shadowColor: Colors.black, 
                           elevation: 12,
@@ -78,7 +78,7 @@ class MapTab extends StatelessWidget {
                     },
                     child: const Text('Suggested \n Locations', style:TextStyle(color: Colors.black, fontSize: 17), ),
                   ),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   Expanded(child: MapSample(key: mapSampleKey, reviews: reviews)),
                 ],
               );

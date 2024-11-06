@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:async';
 
 import 'package:campuscomfort/my_reviews_tab.dart';
@@ -62,7 +64,7 @@ class MapSampleState extends State<MapSample> {
         final GoogleMapController controller = await _controller.future;
         controller.animateCamera(CameraUpdate.newLatLng(newPosition));
       });
-    } else if (status.isDenied) { // TODO: Maybe remove this?
+    } else if (status.isDenied) {
       // Handle denied permission
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Location permission is required to show your location on the map.')),
