@@ -27,7 +27,11 @@ class GeofencingService {
   final List<UMDBuilding> buildings = [
     UMDBuilding(
       officialName: "Brendan Iribe Center for Computer Science and Engineering",
-      validMatches: ["Brendan Iribe Center for Computer Science and Engineering"],
+      validMatches: ["Brendan Iribe Center for Computer Science and Engineering",
+        "Iribe",
+        "Iribe Center",
+        "Brendan Iribe Center",
+      ],
       vertices: [
         const LatLng(38.989333, -76.936871),
         const LatLng(38.989004, -76.936559),
@@ -43,7 +47,12 @@ class GeofencingService {
     ),
     UMDBuilding(
       officialName: "Computer Science Instructional Center",
-      validMatches: ["Computer Science Instructional Center"],
+      validMatches: ["Computer Science Instructional Center",
+        "CSI",
+        "CS Building",
+        "Computer Science Building",
+        "Old CS Building",
+      ],
       vertices: [
         const LatLng(38.990126, -76.936356),
         const LatLng(38.989838, -76.936351),
@@ -53,7 +62,9 @@ class GeofencingService {
     ),
     UMDBuilding(
       officialName: "Wind Tunnel Building",
-      validMatches: ["Wind Tunnel Building"],
+      validMatches: ["Wind Tunnel Building",
+        "Wind Tunnel",
+      ],
       vertices: [
         const LatLng(38.989684, -76.936560),
         const LatLng(38.990163, -76.936780),
@@ -65,7 +76,9 @@ class GeofencingService {
     ),
     UMDBuilding(
       officialName: "A.V. Williams",
-      validMatches: ["A.V. Williams"],
+      validMatches: ["A.V. Williams",
+        "Office Hours",
+      ],
       vertices: [
         const LatLng(38.990276, -76.936168),
         const LatLng(38.991331, -76.936190),
@@ -124,7 +137,10 @@ class GeofencingService {
     ),
     UMDBuilding(
       officialName: "A. James Clark Hall",
-      validMatches: ["A. James Clark Hall"],
+      validMatches: ["A. James Clark Hall",
+        "Clark Hall",
+        "James Clark Hall",
+      ],
       vertices: [
         const LatLng(38.992452, -76.937499),
         const LatLng(38.991522, -76.937574),
@@ -134,7 +150,10 @@ class GeofencingService {
     ),
     UMDBuilding(
       officialName: "Jeong H. Kim Engineering Building",
-      validMatches: ["Jeong H. Kim Engineering Building"],
+      validMatches: ["Jeong H. Kim Engineering Building",
+        "Engineering Buidling",
+        "Kim Engineering Building",
+      ],
       vertices: [
         const LatLng(38.990880, -76.937542),
         const LatLng(38.991260, -76.937504),
@@ -150,7 +169,10 @@ class GeofencingService {
     ),
     UMDBuilding(
       officialName: "E.A. Fernandez IDEA Factory",
-      validMatches: ["E.A. Fernandez IDEA Factory"],
+      validMatches: ["E.A. Fernandez IDEA Factory",
+        "IDEA Factory",
+        "IDEA",
+      ],
       vertices: [
         const LatLng(38.990868, -76.937794),
         const LatLng(38.990447, -76.937810),
@@ -160,7 +182,9 @@ class GeofencingService {
     ),
     UMDBuilding(
       officialName: "Engineering Laboratory Building",
-      validMatches: ["Engineering Laboratory Building"],
+      validMatches: ["Engineering Laboratory Building",
+        "Engineering Lab",
+      ],
       vertices: [
         const LatLng(38.989150, -76.937370),
         const LatLng(38.989492, -76.937370),
@@ -174,7 +198,9 @@ class GeofencingService {
     ),
     UMDBuilding(
       officialName: "Glen L. Martin Hall",
-      validMatches: ["Glen L. Martin Hall"],
+      validMatches: ["Glen L. Martin Hall",
+        "Martin Hall",
+      ],
       vertices: [
         const LatLng(38.988812, -76.937021),
         const LatLng(38.988950, -76.937037),
@@ -189,7 +215,12 @@ class GeofencingService {
     ),
     UMDBuilding(
       officialName: "William E. Kirwan Hall",
-      validMatches: ["William E. Kirwan Hall"],
+      validMatches: ["William E. Kirwan Hall",
+        "Kirwan Hall",
+        "Kirwan",
+        "Math Building",
+        "STEM Library",
+      ],
       vertices: [
         const LatLng(38.988662, -76.938883),
         const LatLng(38.988900, -76.938883),
@@ -208,8 +239,14 @@ class GeofencingService {
       ],
     ),
     UMDBuilding(
-      officialName: "John S. Toll Physics",
-      validMatches: ["John S. Toll Physics"],
+      officialName: "John S. Toll Physics Building",
+      validMatches: ["John S. Toll Physics Building",
+        "Toll Physics",
+        "Physics Building",
+        "Toll Physics Building",
+        "John Toll Physics Building",
+        "Physics Hall"
+      ],
       vertices: [
         const LatLng(38.988174, -76.939838),
         const LatLng(38.988329, -76.939865),
@@ -234,7 +271,9 @@ class GeofencingService {
     ),
     UMDBuilding(
       officialName: "Chemistry Building",
-      validMatches: ["Chemistry Building"],
+      validMatches: ["Chemistry Building",
+        "Chem Building",
+      ],
       vertices: [
         const LatLng(38.989192, -76.938893),
         const LatLng(38.989254, -76.938748),
@@ -259,7 +298,14 @@ class GeofencingService {
     ),
     UMDBuilding(
       officialName: "J.M. Patterson Building",
-      validMatches: ["J.M. Patterson Building"],
+      validMatches: ["J.M. Patterson Building",
+        "Patterson Building",
+        "J.M. Patterson",
+        "J.M. Patterson Hall",
+        "JM Patterson",
+        "JM Patterson Hall",
+        "JM Patterson Building",
+      ],
       vertices: [
         const LatLng(38.990272, -76.939935),
         const LatLng(38.990472, -76.939940),
@@ -273,7 +319,13 @@ class GeofencingService {
     ),
     UMDBuilding(
       officialName: "Chemical and Nuclear Engineering Building",
-      validMatches: ["Chemical and Nuclear Engineering Building"],
+      validMatches: ["Chemical and Nuclear Engineering Building",
+        "Chem and Nuclear Engineering Building",
+        "Nuclear Engineering",
+        "Nuclear Engineering Building",
+        "Chemical Engineering",
+        "Chemical Engineering Building",
+      ],
       vertices: [
         const LatLng(38.990284, -76.938807),
         const LatLng(38.990935, -76.938802),
@@ -297,7 +349,14 @@ class GeofencingService {
     ),
     UMDBuilding(
       officialName: "Animal Sciences/Agricultural Engineering Building",
-      validMatches: ["Animal Sciences/Agricultural Engineering Building"],
+      validMatches: ["Animal Sciences/Agricultural Engineering Building",
+        "Animal Sciences",
+        "Animal Sciences Building",
+        "Agricultural Engineering",
+        "Agricultural Engineering Building",
+        "Ag Engineering",
+        "Ag Engineering Building",
+      ],
       vertices: [
         const LatLng(38.991151, -76.939086),
         const LatLng(38.991272, -76.939006),
@@ -375,7 +434,11 @@ class GeofencingService {
     ),
     UMDBuilding(
       officialName: "Regents Drive Parking Garage",
-      validMatches: ["Regents Drive Parking Garage"],
+      validMatches: ["Regents Drive Parking Garage",
+        "Regents Garage",
+        "Regents Drive Garage",
+        "Regents",
+      ],
       vertices: [
         const LatLng(38.989204, -76.940975),
         const LatLng(38.989859, -76.940948),
@@ -387,7 +450,9 @@ class GeofencingService {
     ),
     UMDBuilding(
       officialName: "Plant Science Building",
-      validMatches: ["Plant Science Building"],
+      validMatches: ["Plant Science Building",
+        "Plant Sciences Building",
+      ],
       vertices: [
         const LatLng(38.988541, -76.940830),
         const LatLng(38.988933, -76.940857),
@@ -400,7 +465,11 @@ class GeofencingService {
     ),
     UMDBuilding(
       officialName: "Geology Building",
-      validMatches: ["Geology Building"],
+      validMatches: ["Geology Building",
+        "Geology Hall",
+        "Geo Building",
+        "Geo Hall",
+      ],
       vertices: [
         const LatLng(38.987970, -76.940830),
         const LatLng(38.988383, -76.940841),
@@ -410,7 +479,9 @@ class GeofencingService {
     ),
     UMDBuilding(
       officialName: "Hornbake Library",
-      validMatches: ["Hornbake Library"],
+      validMatches: ["Hornbake Library",
+        "Hornbake"
+      ],
       vertices: [
         const LatLng(38.987803, -76.941254),
         const LatLng(38.988500, -76.941302),
