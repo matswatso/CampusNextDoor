@@ -463,10 +463,10 @@ class GeofencingService {
   }
 
   // Get the building a user is currently in (if any)
-  String? getCurrentBuilding(LatLng userLocation) {
+  UMDBuilding? getCurrentBuilding(LatLng userLocation) {
     for (var building in buildings) {
       if (isPointInPolygon(userLocation, building.vertices)) {
-        return building.officialName;
+        return building;
       }
     }
     return null;

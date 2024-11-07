@@ -1,4 +1,5 @@
 import 'package:campuscomfort/add_review_form.dart';
+import 'package:campuscomfort/geofencing_service.dart';
 import 'package:campuscomfort/map_sample.dart';
 import 'package:campuscomfort/map_tab.dart';
 import 'package:campuscomfort/my_reviews_tab.dart';
@@ -234,7 +235,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ]),
           ),
           body: TabBarView(children: [
-            MapTab(reviews: reviews, mapSampleKey: mapKey),
+            MapTab(reviews: reviews, mapSampleKey: mapKey, geofencingService: GeofencingService(),),
             MyReviewsTab(reviews: reviews),
           ]),
           floatingActionButton: FloatingActionButton.extended(
