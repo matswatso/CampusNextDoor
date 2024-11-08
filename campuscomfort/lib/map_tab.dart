@@ -130,42 +130,30 @@ Widget buildSummaryButton({
   final currentPosition = mapSampleKey.currentState?.currentPosition ?? 
       const LatLng(38.989571, -76.936436);
       
-  final currentBuilding = geofencingService.getCurrentBuilding(currentPosition);
-  final bool isInBuilding = currentBuilding != null;
+  final closestBuilding = geofencingService.getClosestBuilding(currentPosition);
 
   return ElevatedButton(
     style: ElevatedButton.styleFrom(
-      backgroundColor: isInBuilding 
-          ? Theme.of(context).colorScheme.inversePrimary
-          : Theme.of(context).colorScheme.inversePrimary.withOpacity(0.5),
+      backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
       ),
-      elevation: isInBuilding ? 12 : 0,
+      elevation: 12,
     ),
-    onPressed: isInBuilding 
-        ? () { // If we are in a building, open the view
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (BuildContext context) => BuildingSummary(
-                  reviews: reviews
-                      .where((review) => currentBuilding.nameMatches(review.buildingName))
-                      .toList(),
-                  mapSampleKey: mapSampleKey,
-                  building: currentBuilding,
-                ),
-              ),
-            );
-          }
-        : null, // If we are not in a building, do nothing
-    child: Text(
-      'Building Summary',
-      style: TextStyle(
-        color: isInBuilding 
-            ? Theme.of(context).colorScheme.onPrimary
-            : Theme.of(context).colorScheme.onPrimary.withOpacity(0.5),
-      ),
-    ),
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => BuildingSummary(
+            reviews: reviews
+                .where((review) => closestBuilding.nameMatches(review.buildingName))
+                .toList(),
+            mapSampleKey: mapSampleKey,
+            building: closestBuilding,
+          ),
+        ),
+      );
+    },
+    child: const Text('Building Summary'),
   );
 }

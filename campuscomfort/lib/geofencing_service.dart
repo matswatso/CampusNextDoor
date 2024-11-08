@@ -559,4 +559,27 @@ class GeofencingService {
     
     return nearbyBuildings;
   }
+
+  // Returns the closest building
+  UMDBuilding getClosestBuilding(LatLng userLocation) {
+    UMDBuilding? closestBuilding;
+    double minDistance = double.infinity;
+
+    for (var building in buildings) {
+      double buildingMinDistance = double.infinity;
+      for (var vertex in building.vertices) {
+        double distance = calculateDistance(userLocation, vertex);
+        if (distance < buildingMinDistance) {
+          buildingMinDistance = distance;
+        }
+      }
+
+      if (buildingMinDistance < minDistance) {
+        minDistance = buildingMinDistance;
+        closestBuilding = building;
+      }
+    }
+
+    return closestBuilding!;
+  }
 }
