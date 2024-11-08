@@ -490,6 +490,67 @@ class GeofencingService {
         const LatLng(38.987795, -76.941834),
       ],
     ),
+    UMDBuilding(
+      officialName: "Mckeldin Mall",
+      validMatches: ["McKeldin",
+        "McKeldin Library",
+      ],
+      vertices: [
+        const LatLng(38.992452, -76.945536),
+        const LatLng(38.985716, -76.945502),
+        const LatLng(38.985641, -76.944671),
+        const LatLng(38.986275, -76.944759),
+      ],
+    ),
+    UMDBuilding(
+      officialName: "Jimenez Hall",
+      validMatches: ["Jimenez",
+      ],
+      vertices: [
+        const LatLng(38.986650, -76.944816),
+        const LatLng(38.986659, -76.944356),
+        const LatLng(38.986955, -76.944828),
+        const LatLng(38.986946, -76.944345),
+      ],
+    ),
+    UMDBuilding(
+      officialName: "H. J. Patterson Hall",
+      validMatches: ["H. J. Patterson", 
+        "HJ Patterson Hall",
+        "HJ Patterson",
+      ],
+      vertices: [
+        const LatLng(38.986798,-76.944085),
+        const LatLng(38.986810,-76.943176),
+        const LatLng(38.987364,-76.943155),
+        const LatLng(38.987359,-76.944034),
+      ],
+    ),
+    UMDBuilding(
+      officialName: "Edward St. Johns Learning and Teaching Center",
+      validMatches: ["ESJ", 
+        "ESJ Hall",
+        "Edward St. Johns",
+      ],
+      vertices: [
+        const LatLng(38.987392,-76.942259),
+        const LatLng(38.986810,-76.943176),
+        const LatLng(38.987364,-76.943155),
+        const LatLng(38.987359,-76.944034),
+      ],
+    ),
+    UMDBuilding(
+      officialName: "Memorial Chapel",
+      validMatches: ["Memorial Field Chapel", 
+        "Chapel",
+      ],
+      vertices: [
+        const LatLng(38.984258,-76.941354),
+        const LatLng(38.984037,-76.941306),
+        const LatLng(38.984032,-76.940464),
+        const LatLng(38.984315,-76.940488),
+      ],
+    ),
   ];
 
   // Ray casting algorithm adapted from https://gist.github.com/aidenprice/971e10c13c82dd73c9fc <-- python and uses a bit of a different approach
@@ -559,8 +620,7 @@ class GeofencingService {
     
     return nearbyBuildings;
   }
-
-  // Returns the closest building
+   // Returns the closest building
   UMDBuilding getClosestBuilding(LatLng userLocation) {
     UMDBuilding? closestBuilding;
     double minDistance = double.infinity;
@@ -582,4 +642,5 @@ class GeofencingService {
 
     return closestBuilding!;
   }
+
 }
