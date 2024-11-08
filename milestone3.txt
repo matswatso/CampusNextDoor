@@ -1,0 +1,26 @@
+Original Milestone 2 Goals:
+ - Geofencing campus buildings so the app can know what building you are in based on
+your location. This lays the groundwork for the building summary pop ups stretch goal
+
+Milestone Accomplishments:
+    "Building Geofencing"
+     - Map updated with locations of buildings along the GPX path as well as major buildings on campus.
+     We use the user's location to find what the closest building is to the user. 
+
+    "Building Summary Button"
+    - Added Building Summary button that displays a new page that goes over the building information 
+    of the closest building to the user. This information will be procured through reviews that have been 
+    made using our add review system. Some information being displayed is the average of the 
+    building location ratings, average amenity ratings, Number of reviews, as well as recent pictures 
+    if the exist. 
+
+
+
+Changes to timeline:
+In our initial plan for Milestone 3 we wanted to use geofencing to determine how to show different 
+building information through reviews based on only if the user was actually in the building. However,
+we realized this was inefficient since location services can be inaccurate and the exact latlong coversions
+may be inaccurate while close to the edge of the building. 
+
+We are still on track for the final product to make the building summary popup with pictures, reviews, 
+and comments
