@@ -127,11 +127,6 @@ Widget buildSummaryButton({
   required BuildContext context,
   required GeofencingService geofencingService,
 }) {
-  final currentPosition = mapSampleKey.currentState?.currentPosition ?? 
-      const LatLng(38.989571, -76.936436);
-      
-  final closestBuilding = geofencingService.getClosestBuilding(currentPosition);
-
   return ElevatedButton(
     style: ElevatedButton.styleFrom(
       backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -141,6 +136,13 @@ Widget buildSummaryButton({
       elevation: 12,
     ),
     onPressed: () {
+      final currentPosition = mapSampleKey.currentState?.currentPosition ?? 
+      const LatLng(38.989571, -76.936436);
+      
+      final closestBuilding = geofencingService.getClosestBuilding(currentPosition);
+
+      print("User Location: (${currentPosition.latitude}, ${currentPosition.longitude})");
+
       Navigator.push(
         context,
         MaterialPageRoute(

@@ -186,7 +186,7 @@ class BuildingSummary extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('${building.officialName[0]} Review'),
+        title: Text('${building.officialName} Summary'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: SingleChildScrollView(

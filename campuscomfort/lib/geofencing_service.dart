@@ -491,7 +491,7 @@ class GeofencingService {
       ],
     ),
     UMDBuilding(
-      officialName: "Mckeldin Mall",
+      officialName: "Mckeldin Library",
       validMatches: ["McKeldin",
         "McKeldin Library",
       ],
@@ -505,6 +505,7 @@ class GeofencingService {
     UMDBuilding(
       officialName: "Jimenez Hall",
       validMatches: ["Jimenez",
+        "Jimenez Hall",
       ],
       vertices: [
         const LatLng(38.986650, -76.944816),
@@ -518,6 +519,7 @@ class GeofencingService {
       validMatches: ["H. J. Patterson", 
         "HJ Patterson Hall",
         "HJ Patterson",
+        "H. J. Patterson Hall"
       ],
       vertices: [
         const LatLng(38.986798,-76.944085),
@@ -531,6 +533,7 @@ class GeofencingService {
       validMatches: ["ESJ", 
         "ESJ Hall",
         "Edward St. Johns",
+        "Edward St. Johns Learning and Teaching Center"
       ],
       vertices: [
         const LatLng(38.987392,-76.942259),
@@ -543,6 +546,7 @@ class GeofencingService {
       officialName: "Memorial Chapel",
       validMatches: ["Memorial Field Chapel", 
         "Chapel",
+        "Memorial Chapel"
       ],
       vertices: [
         const LatLng(38.984258,-76.941354),
@@ -624,17 +628,21 @@ class GeofencingService {
   UMDBuilding getClosestBuilding(LatLng userLocation) {
     UMDBuilding? closestBuilding;
     double minDistance = double.infinity;
-
+    //int i = 0;
     for (var building in buildings) {
+      //print("Checking: ${building.officialName}");
       double buildingMinDistance = double.infinity;
       for (var vertex in building.vertices) {
         double distance = calculateDistance(userLocation, vertex);
+        //i++;
+        //print("$i: Distance = ${distance}, point = (${vertex.latitude}, ${vertex.longitude})");
         if (distance < buildingMinDistance) {
           buildingMinDistance = distance;
         }
       }
 
       if (buildingMinDistance < minDistance) {
+        //print("New closest building: ${building.officialName}");
         minDistance = buildingMinDistance;
         closestBuilding = building;
       }
