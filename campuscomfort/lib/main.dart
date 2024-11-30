@@ -152,6 +152,31 @@ class _MyHomePageState extends State<MyHomePage> {
         accessibilityStars: 4,
         navigabilityStars: 1),
 
+     BuildingReview(
+        id: 'Jeong H. Kim Engineering Building',
+        userId: 'Matt Watson',
+        starRating: 4,
+        reviewText:
+            'Quite a unique building that encompasses many of the engineering students seen on campus',
+        title: 'Jeong H. Kim Engineering Building',
+        image: null,
+        dateReviewed: DateTime(2024, 10, 3),
+        buildingName: 'Engineering Buidling',
+        accessibilityStars: 4,
+        navigabilityStars: 1),
+      BuildingReview(
+        id: 'Physiscs',
+        userId: 'Matt Watson',
+        starRating: 3,
+        reviewText:
+            'Theres lots of physics going on over here I believe',
+        title: 'Toll Physics',
+        image: null,
+        dateReviewed: DateTime(2024, 10, 3),
+        buildingName: 'Physics Hall',
+        accessibilityStars: 4,
+        navigabilityStars: 1),
+
     CafeReview(
         id: 'Taco Bell 1',
         userId: 'Andrew Tiananmen Zong',
@@ -198,7 +223,7 @@ class _MyHomePageState extends State<MyHomePage> {
         location: const LatLng(38.9865, -76.9430),
         objectReviewed: 'Nap Pods'),
 
-        MiscellaneousReview(
+    MiscellaneousReview(
         id: 'Iribe Balcony',
         userId: 'Matt Watson',
         starRating: 5,
@@ -209,6 +234,19 @@ class _MyHomePageState extends State<MyHomePage> {
         dateReviewed: DateTime(2024, 10, 1),
         location: const LatLng(38.989079,-76.935875),
         objectReviewed: 'Balcony'),
+
+    MiscellaneousReview(
+        id: 'James Clacck',
+        userId: 'Matt Watson',
+        starRating: 2,
+        reviewText: 'Its got a weird entrance I dont like it ):',
+        title: 'James Clark Entrance',
+        buildingName: 'Clark Hall',
+        image: null,
+        dateReviewed: DateTime(2024, 10, 1),
+        location: const LatLng(38.992094,-76.937678),
+        objectReviewed: 'Balcony'),
+
     StudyAreaReview(
         id: 'Clarice1',
         userId: 'Alex Jorgensen',
@@ -224,6 +262,21 @@ class _MyHomePageState extends State<MyHomePage> {
         noiseLevelStars: 5,
         comfortStars: 4,
         popularityStars: 2),
+     StudyAreaReview(
+        id: 'GlenHall1',
+        userId: 'Matt Watson',
+        starRating: 4,
+        reviewText:
+            'This is a very underrated spot to come study and find everything you need in a quite place',
+        title: 'STUDY      (:',
+        buildingName: 'Martin Hall',
+        image: null,
+        dateReviewed: DateTime(2023, 10, 5),
+        location: const LatLng(38.988948,-76.939404),
+        studyAreaName: 'Clarice Study Area',
+        noiseLevelStars: 5,
+        comfortStars: 4,
+        popularityStars: 3),
   ];
   final mapKey = GlobalKey<MapSampleState>(); // allows us to access map state information
 
