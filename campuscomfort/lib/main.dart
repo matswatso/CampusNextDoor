@@ -54,8 +54,33 @@ class _MyHomePageState extends State<MyHomePage> {
         location: const LatLng(38.9869, -76.9426),
         cleanlinessStars: 5,
         wellStockedStars: 3),
+    BathroomReview(
+        id: 'Bathroom2',
+        userId: 'Matt Watson',
+        starRating: 2,
+        reviewText: 'This bathroom is terrible ngl',
+        title: 'Mckeldin First Floor',
+        buildingName: 'Mckeldin',
+        image: null,
+        dateReviewed: DateTime(2024, 9, 22),
+        location: const LatLng(38.9869, -76.9426),
+        cleanlinessStars: 2,
+        wellStockedStars: 1),
     BuildingReview(
         id: 'Iribe',
+        userId: 'Andrew Tiananmen Zong',
+        starRating: 5,
+        reviewText:
+            'Nice, but the elevator is very slow. Can be difficult to find rooms',
+        title: 'One of the buildings of all time',
+        image: null,
+        dateReviewed: DateTime(2024, 9, 15),
+        
+        buildingName: 'Iribe Center for Computer Science',
+        accessibilityStars: 5,
+        navigabilityStars: 4),
+    BuildingReview(
+        id: 'CSI',
         userId: 'Andrew Tiananmen Zong',
         starRating: 5,
         reviewText:
@@ -66,6 +91,67 @@ class _MyHomePageState extends State<MyHomePage> {
         buildingName: 'Iribe Center for Computer Science',
         accessibilityStars: 5,
         navigabilityStars: 4),
+      BuildingReview(
+        id: 'Windtunnel',
+        userId: 'Matt Watson',
+        starRating: 2,
+        reviewText:
+            'Very drafty for some reason, all I can hear are echoes',
+        title: 'WIndy',
+        image: null,
+        dateReviewed: DateTime(2024, 9, 25),
+        buildingName: 'Wind Tunnel',
+        accessibilityStars: 5,
+        navigabilityStars: 4),
+      BuildingReview(
+        id: 'Williams',
+        userId: 'Matt Watson',
+        starRating: 3,
+        reviewText:
+            'Drafty in here ngl I dont really like it',
+        title: 'AV',
+        image: null,
+        dateReviewed: DateTime(2024, 10, 3),
+        buildingName: 'A.V. Williams',
+        accessibilityStars: 5,
+        navigabilityStars: 4),
+     BuildingReview(
+        id: 'ea1',
+        userId: 'Matt Watson',
+        starRating: 2,
+        reviewText:
+            'Theres too many engineers in here',
+        title: 'EA SPORTS in the game',
+        image: null,
+        dateReviewed: DateTime(2024, 10, 3),
+        buildingName: 'Engineering Annex',
+        accessibilityStars: 3,
+        navigabilityStars: 2),
+     BuildingReview(
+        id: 'eaer1',
+        userId: 'Matt Watson',
+        starRating: 3,
+        reviewText:
+            'This building is quite huge',
+        title: 'ERF',
+        image: null,
+        dateReviewed: DateTime(2024, 10, 3),
+        buildingName: 'Energy Research Facility',
+        accessibilityStars: 4,
+        navigabilityStars: 1),
+     BuildingReview(
+        id: 'Biomolecular',
+        userId: 'Matt Watson',
+        starRating: 4,
+        reviewText:
+            'This building is very interesting, equipment seems very expensive',
+        title: 'BIO',
+        image: null,
+        dateReviewed: DateTime(2024, 10, 3),
+        buildingName: 'Biomolecular Sciences Building',
+        accessibilityStars: 4,
+        navigabilityStars: 1),
+
     CafeReview(
         id: 'Taco Bell 1',
         userId: 'Andrew Tiananmen Zong',
@@ -81,6 +167,25 @@ class _MyHomePageState extends State<MyHomePage> {
         customerServiceStars: 4,
         foodQualityStars: 3,
         cleanlinessStars: 4),
+
+
+    CafeReview(
+        id: 'Iribe 1',
+        userId: 'Matt Watson',
+        starRating: 4,
+        reviewText:
+            'This honestly is a decent cafe although they never have scones thats why they get 4 STARS',
+        title: 'BreakPoint Cafe',
+        buildingName: 'Iribe',
+        image: null,
+        dateReviewed: DateTime(2024, 10, 2),
+        location: const LatLng(38.989165,-76.936354),
+        cafeName: 'Taco Bell',
+        customerServiceStars: 4,
+        foodQualityStars: 3,
+        cleanlinessStars: 4),
+
+
     MiscellaneousReview(
         id: 'NapPods',
         userId: 'Nap Pods Daily',
@@ -92,6 +197,18 @@ class _MyHomePageState extends State<MyHomePage> {
         dateReviewed: DateTime(2024, 10, 1),
         location: const LatLng(38.9865, -76.9430),
         objectReviewed: 'Nap Pods'),
+
+        MiscellaneousReview(
+        id: 'Iribe Balcony',
+        userId: 'Matt Watson',
+        starRating: 5,
+        reviewText: 'Genuinly an amazing view im so glad that I got the chance to see it',
+        title: 'Iribe Top Balcony',
+        buildingName: 'Iribe',
+        image: null,
+        dateReviewed: DateTime(2024, 10, 1),
+        location: const LatLng(38.989079,-76.935875),
+        objectReviewed: 'Balcony'),
     StudyAreaReview(
         id: 'Clarice1',
         userId: 'Alex Jorgensen',
@@ -231,7 +348,7 @@ class _MyHomePageState extends State<MyHomePage> {
             centerTitle: true,
             bottom: const TabBar(tabs: [
               Tab(text: 'Map'),
-              Tab(text: 'My Reviews'),
+              Tab(text: 'Reviews'),
             ]),
           ),
           body: TabBarView(children: [
