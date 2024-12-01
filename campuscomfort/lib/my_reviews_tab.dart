@@ -88,7 +88,7 @@ class ReviewView extends StatelessWidget {
         const SizedBox(height: 16),
         _buildOverallRatingCard(review.starRating),
         const SizedBox(height: 16),
-        if (!(review is MiscellaneousReview)) ...[
+        if (review is! MiscellaneousReview) ...[
           _buildDetailedRatingsCard(review),
           const SizedBox(height: 16),
         ],
