@@ -72,10 +72,9 @@ class _MyHomePageState extends State<MyHomePage> {
         starRating: 5,
         reviewText:
             'Nice, but the elevator is very slow. Can be difficult to find rooms',
-        title: 'One of the buildings of all time',
+        title: 'The better CSI',
         image: null,
         dateReviewed: DateTime(2024, 9, 15),
-        
         buildingName: 'Iribe Center for Computer Science',
         accessibilityStars: 5,
         navigabilityStars: 4),
@@ -84,11 +83,11 @@ class _MyHomePageState extends State<MyHomePage> {
         userId: 'Andrew Tiananmen Zong',
         starRating: 5,
         reviewText:
-            'Nice, but the elevator is very slow. Can be difficult to find rooms',
+            'Not as nice as iribe',
         title: 'One of the buildings of all time',
         image: null,
         dateReviewed: DateTime(2024, 9, 15),
-        buildingName: 'Iribe Center for Computer Science',
+        buildingName: 'CSI',
         accessibilityStars: 5,
         navigabilityStars: 4),
       BuildingReview(
@@ -97,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
         starRating: 2,
         reviewText:
             'Very drafty for some reason, all I can hear are echoes',
-        title: 'WIndy',
+        title: 'Windy',
         image: null,
         dateReviewed: DateTime(2024, 9, 25),
         buildingName: 'Wind Tunnel',
@@ -151,7 +150,6 @@ class _MyHomePageState extends State<MyHomePage> {
         buildingName: 'Biomolecular Sciences Building',
         accessibilityStars: 4,
         navigabilityStars: 1),
-
      BuildingReview(
         id: 'Jeong H. Kim Engineering Building',
         userId: 'Matt Watson',
@@ -176,7 +174,6 @@ class _MyHomePageState extends State<MyHomePage> {
         buildingName: 'Physics Hall',
         accessibilityStars: 4,
         navigabilityStars: 1),
-
     CafeReview(
         id: 'Taco Bell 1',
         userId: 'Andrew Tiananmen Zong',
@@ -192,8 +189,6 @@ class _MyHomePageState extends State<MyHomePage> {
         customerServiceStars: 4,
         foodQualityStars: 3,
         cleanlinessStars: 4),
-
-
     CafeReview(
         id: 'Iribe 1',
         userId: 'Matt Watson',
@@ -209,8 +204,6 @@ class _MyHomePageState extends State<MyHomePage> {
         customerServiceStars: 4,
         foodQualityStars: 3,
         cleanlinessStars: 4),
-
-
     MiscellaneousReview(
         id: 'NapPods',
         userId: 'Nap Pods Daily',
@@ -222,7 +215,6 @@ class _MyHomePageState extends State<MyHomePage> {
         dateReviewed: DateTime(2024, 10, 1),
         location: const LatLng(38.9865, -76.9430),
         objectReviewed: 'Nap Pods'),
-
     MiscellaneousReview(
         id: 'Iribe Balcony',
         userId: 'Matt Watson',
@@ -234,7 +226,6 @@ class _MyHomePageState extends State<MyHomePage> {
         dateReviewed: DateTime(2024, 10, 1),
         location: const LatLng(38.989079,-76.935875),
         objectReviewed: 'Balcony'),
-
     MiscellaneousReview(
         id: 'James Clacck',
         userId: 'Matt Watson',
@@ -246,7 +237,6 @@ class _MyHomePageState extends State<MyHomePage> {
         dateReviewed: DateTime(2024, 10, 1),
         location: const LatLng(38.992094,-76.937678),
         objectReviewed: 'Balcony'),
-
     StudyAreaReview(
         id: 'Clarice1',
         userId: 'Alex Jorgensen',
@@ -273,7 +263,7 @@ class _MyHomePageState extends State<MyHomePage> {
         image: null,
         dateReviewed: DateTime(2023, 10, 5),
         location: const LatLng(38.988948,-76.939404),
-        studyAreaName: 'Clarice Study Area',
+        studyAreaName: 'Martin Study Area',
         noiseLevelStars: 5,
         comfortStars: 4,
         popularityStars: 3),

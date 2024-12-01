@@ -35,36 +35,23 @@ class StudyAreaReview extends Review with LocationMixin {
   @override
   Widget buildRatings() {
     return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Row(
-            children: [
-              const Text("Noise Level: ", style: TextStyle(fontSize: 26)),
-              ...List.generate(
-                noiseLevelStars,
-                (index) => const Icon(Icons.star, size: 26, color: Colors.amber),
-              ),
-            ],
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'Detailed Ratings',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
           ),
-          Row(
-            children: [
-              const Text("Comfort: ", style: TextStyle(fontSize: 26)),
-              ...List.generate(
-                comfortStars,
-                (index) => const Icon(Icons.star, size: 26, color: Colors.amber),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              const Text("Popularity: ", style: TextStyle(fontSize: 26)),
-              ...List.generate(
-                popularityStars,
-                (index) => const Icon(Icons.star, size: 26, color: Colors.amber),
-              ),
-            ],
-          ),
-        ]);
+        ),
+        const SizedBox(height: 8),
+        buildRatingRow("Noise Level", noiseLevelStars),
+        const SizedBox(height: 4),
+        buildRatingRow("Comfort", comfortStars),
+        const SizedBox(height: 4),
+        buildRatingRow("Popularity", popularityStars),
+      ],
+    );
   }
 
   // The below 2 functions are used to store and read this object for persistence

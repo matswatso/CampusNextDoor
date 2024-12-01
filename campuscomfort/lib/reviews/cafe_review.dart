@@ -35,36 +35,21 @@ class CafeReview extends Review with LocationMixin {
   @override
   Widget buildRatings() {
     return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Row(
-            children: [
-              const Text("Customer Service: ", style: TextStyle(fontSize: 26)),
-              ...List.generate(
-                customerServiceStars,
-                (index) => const Icon(Icons.star, size: 26, color: Colors.amber),
-              ),
-            ],
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'Detailed Ratings',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
           ),
-          Row(
-            children: [
-              const Text("Food Quality: ", style: TextStyle(fontSize: 26)),
-              ...List.generate(
-                foodQualityStars,
-                (index) => const Icon(Icons.star, size: 26, color: Colors.amber),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              const Text("Cleanliness: ", style: TextStyle(fontSize: 26)),
-              ...List.generate(
-                cleanlinessStars,
-                (index) => const Icon(Icons.star, size: 26, color: Colors.amber),
-              ),
-            ],
-          ),
-        ]);
+        ),
+        const SizedBox(height: 8),
+        buildRatingRow("Food Quality", foodQualityStars),
+        const SizedBox(height: 4),
+        buildRatingRow("Cleanliness", cleanlinessStars),
+      ],
+    );
   }
 
   // The below 2 functions are used to store and read this object for persistence

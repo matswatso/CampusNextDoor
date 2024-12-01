@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:campuscomfort/reviews/building_review.dart';
+import 'package:campuscomfort/reviews/miscellaneous_review.dart';
 import 'package:campuscomfort/reviews/review.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,7 @@ class MyReviewsTab extends StatelessWidget {
             leading: review.image != null
                 ? Image.file(review.image!)
                 : const Icon(Icons.rate_review),
-            title: Text(review.reviewedItemName),
+            title: Text(review.title),
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -34,7 +35,7 @@ class MyReviewsTab extends StatelessWidget {
                         const Icon(Icons.star, size: 16, color: Colors.amber),
                   ),
                 ),
-                Text(review.title),
+                Text(review.reviewedItemName),
               ],
             ),
             trailing: Text(review.dateReviewed.toString().split(' ')[0]),
@@ -61,123 +62,213 @@ class ReviewView extends StatelessWidget {
       appBar: AppBar(
         title: Text(review.reviewedItemName),
       ),
-      body: OrientationBuilder(builder: (context, orientation) {
-        return Center(child: LayoutBuilder(builder: (context, constraints) {
-          return orientation == Orientation.portrait
-              ? Align(
-                alignment: Alignment.topCenter,
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          if (review is! BuildingReview)
-                            Text("Building: ${review.buildingName}"),
-                          Text(review.userId, style: const TextStyle(fontSize: 20)),
-                          Text(review.title, style: const TextStyle(fontSize: 25)),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: List.generate(
-                              review.starRating,
-                              (index) => const Icon(Icons.star,
-                                  size: 26, color: Colors.amber),
-                            ),
-                          ),
-                          Text(review.reviewText,
-                              style: const TextStyle(fontSize: 18)),
-                          if (review.image != null)
-                            Container(
-                              height: 200,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8),
-                                child: Image.file(
-                                  File(review.image!.path),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                          review.buildRatings(), // Custom for each review type, shows extra star fields
-                        ],
-                      ),
-                  ),
+      body: OrientationBuilder(
+        builder: (context, orientation) {
+          return Center(
+            heightFactor: 1.0,
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(16.0),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 800),
+                child: orientation == Orientation.portrait
+                    ? _buildPortraitLayout(review)
+                    : _buildLandscapeLayout(review),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildPortraitLayout(Review review) {
+    return Column(
+      children: [
+        _buildHeaderCard(review),
+        const SizedBox(height: 16),
+        _buildOverallRatingCard(review.starRating),
+        const SizedBox(height: 16),
+        if (!(review is MiscellaneousReview)) ...[
+          _buildDetailedRatingsCard(review),
+          const SizedBox(height: 16),
+        ],
+        _buildReviewTextCard(review),
+        if (review.image != null) ...[
+          const SizedBox(height: 16),
+          _buildImageCard(review),
+        ],
+      ],
+    );
+  }
+
+  Widget _buildLandscapeLayout(Review review) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [ // Split into columns
+        Expanded( // Left
+          flex: 3,
+          child: Column(
+            children: [
+              _buildHeaderCard(review),
+              const SizedBox(height: 16),
+              _buildReviewTextCard(review),
+              if (review.image != null) ...[
+                const SizedBox(height: 16),
+                _buildImageCard(review),
+              ],
+            ],
+          ),
+        ),
+        const SizedBox(width: 16),
+        Expanded( // right
+          flex: 2,
+          child: Column(
+            children: [
+              _buildOverallRatingCard(review.starRating),
+              const SizedBox(height: 16),
+              _buildDetailedRatingsCard(review),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildHeaderCard(Review review) {
+    return Card(
+      elevation: 4,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (review is! BuildingReview)
+              Text(
+                "Building: ${review.buildingName}",
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey,
                 ),
-              )
-              : Align(
-                alignment: Alignment.topCenter,
-                child: SingleChildScrollView(
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget>[
-                                  Text(review.userId,
-                                      style: const TextStyle(fontSize: 26)),
-                                  Text(review.title,
-                                      style: const TextStyle(fontSize: 26)),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Expanded(
-                                        child: Text(
-                                      review.reviewText,
-                                      style: const TextStyle(fontSize: 18),
-                                      textAlign: TextAlign.center,
-                                    )),
-                                  ),
-                                  if (review.image != null) // TODO: placement for image
-                                    Container(
-                                      height: 200,
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                        border: Border.all(color: Colors.grey),
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(8),
-                                        child: Image.file(
-                                          File(review.image!.path),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                ]),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              Row(
-                                children: [
-                                  const Text("Overall: ",
-                                      style: TextStyle(fontSize: 26)),
-                                  ...List.generate(
-                                    review.starRating,
-                                    (index) => const Icon(Icons.star,
-                                        size: 26, color: Colors.amber),
-                                  ),
-                                ],
-                              ),
-                              review.buildRatings(), // Custom for each review type, shows extra star fields
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+              ),
+            if (review is! BuildingReview) const SizedBox(height: 8),
+            Text(
+              review.title,
+              style: const TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              "Reviewed by ${review.userId}",
+              style: const TextStyle(
+                fontSize: 16,
+                color: Colors.grey,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildOverallRatingCard(int stars) {
+    return Card(
+      elevation: 4,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Overall Rating',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Row(
+              children: List.generate(
+                stars,
+                (index) => const Icon(
+                  Icons.star,
+                  size: 32,
+                  color: Colors.amber,
                 ),
-              );
-        }));
-      }),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDetailedRatingsCard(Review review) {
+    return Card(
+      elevation: 4,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: review.buildRatings(),
+      ),
+    );
+  }
+
+  Widget _buildReviewTextCard(Review review) {
+    return Card(
+      elevation: 4,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Review',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              review.reviewText,
+              style: const TextStyle(fontSize: 16),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildImageCard(Review review) {
+    return Card(
+      elevation: 4,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Text(
+              'Review Image',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          ClipRRect(
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(4),
+              bottomRight: Radius.circular(4),
+            ),
+            child: Image.file(
+              File(review.image!.path),
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

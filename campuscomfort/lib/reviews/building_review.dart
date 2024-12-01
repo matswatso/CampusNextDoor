@@ -27,27 +27,21 @@ class BuildingReview extends Review {
   @override
   Widget buildRatings() {
     return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Row(
-            children: [
-              const Text("Accessibility: ", style: TextStyle(fontSize: 26)),
-              ...List.generate(
-                accessibilityStars,
-                (index) => const Icon(Icons.star, size: 26, color: Colors.amber),
-              ),
-            ],
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'Detailed Ratings',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
           ),
-          Row(
-            children: [
-              const Text("Navigability: ", style: TextStyle(fontSize: 26)),
-              ...List.generate(
-                navigabilityStars,
-                (index) => const Icon(Icons.star, size: 26, color: Colors.amber),
-              ),
-            ],
-          ),
-        ]);
+        ),
+        const SizedBox(height: 8),
+        buildRatingRow("Accessibility", accessibilityStars),
+        const SizedBox(height: 4),
+        buildRatingRow("Navigability", navigabilityStars),
+      ],
+    );
   }
 
   // The below 2 functions are used to store and read this object for persistence

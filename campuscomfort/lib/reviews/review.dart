@@ -46,6 +46,28 @@ abstract class Review {
   Widget buildRatings();
   
   Map<String, dynamic> toMap();
+
+  Widget buildRatingRow(String label, int stars) {
+    return Row(
+      children: [
+        SizedBox(
+          width: 120,
+          child: Text(
+            label,
+            style: const TextStyle(fontSize: 16),
+          ),
+        ),
+        ...List.generate(
+          stars,
+          (index) => const Icon(
+            Icons.star,
+            size: 24,
+            color: Colors.amber,
+          ),
+        ),
+      ],
+    );
+  }
   
   // Used for persistence, but we aren't implementing that right now
 

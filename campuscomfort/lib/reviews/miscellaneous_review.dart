@@ -27,7 +27,7 @@ class MiscellaneousReview extends Review with LocationMixin {
   String get reviewedItemName => objectReviewed;
 
   @override
-  Widget buildRatings() {
+  Widget buildRatings() { // Shouldn't actually run, but must be implemented
     return Container(); // No special stars to be displayed
   }
 
