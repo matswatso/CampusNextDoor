@@ -2,7 +2,7 @@ Created by Matthew Watson and Alex Jorgensen
 
 ## CampusNextDoor Review App 
 
-The Demo Video for this project is here https://drive.google.com/file/d/1vHI4n7UP2TKDWg3xCJKmFo6FOzJxaCQY/view?usp=sharing
+The Demo Video for this project is here https://drive.google.com/file/d/1uiJckC8NMDu--PLRe7luXnkKmMjuNw4J/view?usp=sharing
 
 
 The app is a UMD facilities rating app similar to Yelp. It allows users to leave ratings
